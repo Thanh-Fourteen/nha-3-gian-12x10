@@ -1,0 +1,770 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Nhà 3 gian 12×10</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+</head><body>
+<style>
+/* Layout: một tờ hồ sơ bản vẽ — khung tên ở đầu, rồi phối cảnh 3D → mặt bằng → mặt đứng → dự toán → thuyết minh → nguồn, cột tối đa 1180px */
+:root{
+  --paper:#f3f5f2; --sheet:#fbfcfa; --ink:#1c2830; --muted:#58676f; --rule:#cdd5d3;
+  --accent:#2c5a86; --accent-soft:#e3ecf4; --moss:#53703a;
+  --wall:#1c2830; --fur:#fbfcfa; --fur-line:#8b989e; --halo:#fbfcfa;
+  --z-live:#e5ecdf; --z-sleep:#e1e8f1; --z-tho:#f2e1dc; --z-svc:#eeeadb; --z-wet:#dbebed; --z-out:#eaecea;
+  --el-wall:#f2efe8; --el-recess:#d6d4cc; --el-plinth:#a7a399; --el-glass:#b7cfdb; --el-door:#8a5a37;
+  --el-roof-nhat:#596068; --el-roof-thai:#a9533a; --el-shade:rgba(20,30,35,.13); --el-ground:#c9cfc6;
+  --scene:#dde5ea;
+  --f-body:'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-mono:'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#11161a; --sheet:#161c21; --ink:#e1e7e9; --muted:#93a2a9; --rule:#2b363c;
+  --accent:#86b4df; --accent-soft:#1d2b38; --moss:#9dbb78;
+  --wall:#d9e0e3; --fur:#161c21; --fur-line:#6c7b83; --halo:#161c21;
+  --z-live:#1d281c; --z-sleep:#1a2431; --z-tho:#2d1f1d; --z-svc:#27251b; --z-wet:#142729; --z-out:#1c2226;
+  --el-wall:#2b3137; --el-recess:#1f2429; --el-plinth:#4b4e51; --el-glass:#3b5566; --el-door:#7a5032;
+  --el-roof-nhat:#454c54; --el-roof-thai:#8a412c; --el-shade:rgba(0,0,0,.35); --el-ground:#2a302c;
+  --scene:#1a2228; color-scheme:dark; } }
+:root[data-theme="dark"]{
+  --paper:#11161a; --sheet:#161c21; --ink:#e1e7e9; --muted:#93a2a9; --rule:#2b363c;
+  --accent:#86b4df; --accent-soft:#1d2b38; --moss:#9dbb78;
+  --wall:#d9e0e3; --fur:#161c21; --fur-line:#6c7b83; --halo:#161c21;
+  --z-live:#1d281c; --z-sleep:#1a2431; --z-tho:#2d1f1d; --z-svc:#27251b; --z-wet:#142729; --z-out:#1c2226;
+  --el-wall:#2b3137; --el-recess:#1f2429; --el-plinth:#4b4e51; --el-glass:#3b5566; --el-door:#7a5032;
+  --el-roof-nhat:#454c54; --el-roof-thai:#8a412c; --el-shade:rgba(0,0,0,.35); --el-ground:#2a302c;
+  --scene:#1a2228; color-scheme:dark; }
+
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:28px 64px;display:grid;gap:44px}
+h1,h2,h3{font-weight:700;letter-spacing:-.01em;text-wrap:balance;margin:0}
+h1{font-size:clamp(28px,4.2vw,42px);line-height:1.1}
+h2{font-size:22px;line-height:1.25}
+h3{font-size:15px}
+p{margin:0}
+a{color:var(--accent)}
+.mono{font-family:var(--f-mono)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* Khung tên */
+.titleblock{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);border:1.5px solid var(--ink);background:var(--sheet)}
+.tb-main{padding:22px 24px;display:grid;gap:10px;border-right:1.5px solid var(--ink)}
+.tb-main p{color:var(--muted);max-width:62ch}
+.tb-grid{display:grid;grid-template-columns:1fr 1fr}
+.tb-cell{padding:10px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);display:grid;gap:2px;min-width:0}
+.tb-cell:nth-child(2n){border-right:0}
+.tb-cell span{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tb-cell b{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+.tb-roof{grid-column:1/-1;border-bottom:0;border-right:0;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:760px){.titleblock{grid-template-columns:1fr}.tb-main{border-right:0;border-bottom:1.5px solid var(--ink)}}
+
+.seg{display:inline-flex;border:1.5px solid var(--ink);border-radius:6px;overflow:hidden}
+.seg button{font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border:0;background:transparent;color:var(--ink);cursor:pointer}
+.seg button+button{border-left:1.5px solid var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.seg button:focus-visible,.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+section{display:grid;gap:16px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1.5px solid var(--ink);padding-bottom:8px}
+.sec-head .eyebrow{white-space:nowrap}
+.sheet{background:var(--sheet);border:1px solid var(--rule)}
+
+/* 3D */
+.viewer-wrap{position:relative}
+#viewer{width:100%;height:520px;background:var(--scene);touch-action:none;position:relative;overflow:hidden}
+#viewer canvas{display:block}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.toolbar .grp{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.toolbar .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.chip{font:inherit;font-size:13px;padding:5px 11px;border:1px solid var(--rule);background:var(--sheet);color:var(--ink);border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent);font-weight:600}
+.hint{font-size:12.5px;color:var(--muted)}
+.err{padding:24px;color:var(--muted)}
+
+/* Mặt bằng */
+.plan-grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:940px){.plan-grid{grid-template-columns:1fr}}
+.scroll-x{overflow-x:auto}
+.scroll-x svg{display:block;width:100%;min-width:600px;height:auto}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:14px;border:1px solid var(--rule);vertical-align:-2px;margin-right:6px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tfoot td{font-weight:700;border-bottom:0;border-top:1.5px solid var(--ink)}
+.swatch{display:inline-block;width:10px;height:10px;margin-right:8px;border:1px solid var(--rule);vertical-align:0}
+
+/* SVG plan styles */
+.plan .wall{fill:var(--wall)}
+.plan .lowwall{fill:url(#hatch);stroke:var(--wall);stroke-width:.02}
+.plan .hatchline{stroke:var(--wall);stroke-width:.025}
+.plan .beam{stroke:var(--muted);stroke-width:.025;stroke-dasharray:.18 .1}
+.plan .winframe{fill:var(--sheet);stroke:var(--wall);stroke-width:.018}
+.plan .winglass{stroke:var(--wall);stroke-width:.018}
+.plan .leaf{stroke:var(--wall);stroke-width:.03}
+.plan .swing{fill:none;stroke:var(--muted);stroke-width:.014;stroke-dasharray:.06 .05}
+.plan .fur{fill:var(--fur);stroke:var(--fur-line);stroke-width:.016}
+.plan .furl{fill:none;stroke:var(--fur-line);stroke-width:.014}
+.plan .altar{fill:var(--z-tho);stroke:var(--fur-line);stroke-width:.016}
+.plan .step{fill:var(--sheet);stroke:var(--ink);stroke-width:.016}
+.plan .col{fill:var(--wall)}
+.plan .z-live{fill:var(--z-live)} .plan .z-sleep{fill:var(--z-sleep)} .plan .z-tho{fill:var(--z-tho)}
+.plan .z-svc{fill:var(--z-svc)} .plan .z-wet{fill:var(--z-wet)} .plan .z-out{fill:var(--z-out)}
+.plan .rl{font-family:var(--f-body);font-weight:600;font-size:.27px;fill:var(--ink);text-anchor:middle;paint-order:stroke;stroke:var(--halo);stroke-width:.09px;stroke-linejoin:round}
+.plan .ra{font-family:var(--f-mono);font-size:.2px;fill:var(--muted);text-anchor:middle;paint-order:stroke;stroke:var(--halo);stroke-width:.08px;stroke-linejoin:round}
+.dim{stroke:var(--muted);stroke-width:.014}
+.dimext{stroke:var(--muted);stroke-width:.01}
+.tick{stroke:var(--ink);stroke-width:.03}
+.dt{font-family:var(--f-mono);font-size:.2px;fill:var(--ink);text-anchor:middle}
+.axis-c{fill:var(--sheet);stroke:var(--ink);stroke-width:.02}
+.axis-t{font-family:var(--f-mono);font-size:.24px;font-weight:500;fill:var(--ink);text-anchor:middle;dominant-baseline:central}
+.axis-l{stroke:var(--muted);stroke-width:.01;stroke-dasharray:.12 .06 .02 .06}
+.note{font-family:var(--f-mono);font-size:.19px;fill:var(--muted)}
+
+/* Elevations */
+.elev-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px}
+@media (max-width:940px){.elev-grid{grid-template-columns:1fr}}
+.elev figure{margin:0;display:grid;gap:8px;padding:14px}
+figcaption{font-size:13px;color:var(--muted)}
+figcaption b{color:var(--ink)}
+.elev svg{display:block;width:100%;min-width:400px;height:auto}
+.e-ground{fill:var(--el-ground)}
+.e-gline{stroke:var(--ink);stroke-width:.04}
+.e-plinth{fill:var(--el-plinth);stroke:var(--ink);stroke-width:.018}
+.e-wall{fill:var(--el-wall);stroke:var(--ink);stroke-width:.022}
+.e-recess{fill:var(--el-recess);stroke:var(--ink);stroke-width:.018}
+.e-win{fill:var(--el-glass);stroke:var(--ink);stroke-width:.03}
+.e-door{fill:var(--el-door);stroke:var(--ink);stroke-width:.03}
+.e-thin{stroke:var(--ink);stroke-width:.016}
+.e-step{fill:var(--el-wall);stroke:var(--ink);stroke-width:.016}
+.e-shade{fill:var(--el-shade)}
+.e-roof{stroke:var(--ink);stroke-width:.03}
+.e-tile{stroke:rgba(0,0,0,.28);stroke-width:.012}
+.e-fascia{fill:var(--el-wall);stroke:var(--ink);stroke-width:.02}
+.e-lvl{fill:var(--ink)}
+.e-lt{font-family:var(--f-mono);font-size:.22px;fill:var(--ink)}
+
+/* Cost */
+.cost-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:900px){.cost-grid{grid-template-columns:1fr}}
+.callout{border-left:3px solid var(--accent);padding:12px 16px;background:var(--sheet);display:grid;gap:8px;font-size:14px}
+.callout b{font-variant-numeric:tabular-nums}
+.callout ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.bignum{font-size:30px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px 28px}
+.notes article{display:grid;gap:4px;padding-top:10px;border-top:1px solid var(--rule)}
+.notes p{color:var(--muted);font-size:14px}
+
+.refs{display:grid;gap:0;margin:0;padding:0;list-style:none}
+.refs li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:10px 0;border-bottom:1px solid var(--rule)}
+.refs li span{font-size:13px;color:var(--muted)}
+.refs li em{font-style:normal;font-family:var(--f-mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+@media (max-width:560px){.refs li{grid-template-columns:1fr}}
+.kw{display:flex;flex-wrap:wrap;gap:8px}
+.kw code{font-family:var(--f-mono);font-size:12.5px;padding:3px 8px;border:1px solid var(--rule);background:var(--sheet)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:14px}
+.gallery a{display:grid;gap:6px;text-decoration:none;color:var(--ink);font-size:13px}
+.gallery img{width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--rule);background:var(--sheet)}
+.gallery a:hover img{border-color:var(--accent)}
+.dl-btn{display:inline-block;padding:9px 16px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);font-weight:600;font-size:14px;text-decoration:none;border-radius:6px}
+.dl-btn:focus-visible,.gallery a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.foot{font-size:12.5px;color:var(--muted);border-top:1px solid var(--rule);padding-top:12px}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+
+<div class="wrap">
+
+<header class="titleblock">
+  <div class="tb-main">
+    <div class="eyebrow">Phương án kiến trúc · Nhà ở nông thôn 1 tầng</div>
+    <h1>Nhà 3 gian 12 × 10 m</h1>
+    <p>Gian giữa là phòng khách có hiên thụt vào 1,5 m. Gian phải: phòng thờ, phòng ngủ 3, bếp. Gian trái: phòng ngủ 1, phòng ngủ 2, khu vệ sinh và hiên sau có WC riêng. Kích thước ghi theo tim tường, đơn vị mm.</p>
+  </div>
+  <div class="tb-grid">
+    <div class="tb-cell"><span>Diện tích xây dựng</span><b>120 m²</b></div>
+    <div class="tb-cell"><span>Số tầng</span><b>1 tầng, cos nền +0,45 m</b></div>
+    <div class="tb-cell"><span>Công năng</span><b>1 khách · 1 thờ · 3 ngủ</b></div>
+    <div class="tb-cell"><span>Phụ trợ</span><b>Bếp + ăn · 2 WC · 2 hiên</b></div>
+    <div class="tb-cell"><span>Ngân sách</span><b>≈ 1 tỷ đồng</b></div>
+    <div class="tb-cell"><span>Dự toán phương án</span><b id="tbCost">—</b></div>
+    <div class="tb-cell tb-roof"><span>Kiểu mái (áp dụng cho 3D, mặt đứng, dự toán)</span>
+      <div class="seg" role="group" aria-label="Kiểu mái">
+        <button type="button" id="roofNhat" data-roof="nhat" aria-pressed="true">Mái Nhật 30°</button>
+        <button type="button" id="roofThai" data-roof="thai" aria-pressed="false">Mái Thái 40°</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section aria-labelledby="h3d">
+  <div class="sec-head"><h2 id="h3d">Phối cảnh 3D</h2><span class="eyebrow">Mô hình tương tác</span></div>
+  <div class="toolbar">
+    <div class="grp"><span class="lbl">Chế độ</span>
+      <button type="button" class="chip" id="vmExt" data-vm="ext" aria-pressed="true">Ngoại thất</button>
+      <button type="button" class="chip" id="vmNoroof" data-vm="noroof" aria-pressed="false">Bỏ mái</button>
+      <button type="button" class="chip" id="vmCut" data-vm="cut" aria-pressed="false">Cắt ngang 1,2 m</button>
+    </div>
+    <div class="grp"><span class="lbl">Góc nhìn</span>
+      <button type="button" class="chip" id="camQ" data-cam="q">Góc chéo trước</button>
+      <button type="button" class="chip" id="camF" data-cam="front">Chính diện</button>
+      <button type="button" class="chip" id="camB" data-cam="back">Phía sau</button>
+      <button type="button" class="chip" id="camT" data-cam="top">Từ trên xuống</button>
+    </div>
+  </div>
+  <div class="viewer-wrap sheet"><div id="viewer" aria-label="Mô hình 3D ngôi nhà"></div></div>
+  <p class="hint">Kéo để xoay, cuộn chuột hoặc chụm hai ngón để phóng to, chuột phải hoặc kéo hai ngón để dời. Chọn “Cắt ngang 1,2 m” để xem bố trí nội thất từng phòng.</p>
+</section>
+
+<section aria-labelledby="hplan">
+  <div class="sec-head"><h2 id="hplan">Mặt bằng tầng 1</h2><span class="eyebrow">Tỷ lệ tự do · kích thước tim tường (mm)</span></div>
+  <div class="plan-grid">
+    <div class="sheet scroll-x"><svg id="planSvg" class="plan" role="img" aria-label="Mặt bằng tầng 1 nhà 3 gian 12 x 10 m"></svg></div>
+    <div style="display:grid;gap:14px;min-width:0">
+      <div class="legend" id="legend"></div>
+      <div class="sheet scroll-x" style="padding:4px 6px">
+        <table id="roomTable"><thead><tr><th>Phòng</th><th class="num">Kích thước (m)</th><th class="num">m²</th></tr></thead><tbody></tbody><tfoot></tfoot></table>
+      </div>
+      <p class="hint">Tường bao và tường trục 220 mm, tường ngăn 110 mm. Ô gạch chéo là tường lửng cao 1 m quanh hiên sau. Nét đứt là dầm đỡ mái phía trên.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="helev" class="elev">
+  <div class="sec-head"><h2 id="helev">Mặt đứng</h2><span class="eyebrow">Cao độ tính từ mặt nền hoàn thiện ±0.000</span></div>
+  <div class="elev-grid">
+    <figure class="sheet"><div class="scroll-x"><svg id="elevFront" role="img" aria-label="Mặt đứng chính"></svg></div><figcaption><b>Mặt đứng chính (trục 1 – 4).</b> Gian giữa thụt vào làm hiên, cửa chính gỗ 4 cánh cao 2,8 m, 3 bậc tam cấp.</figcaption></figure>
+    <figure class="sheet"><div class="scroll-x"><svg id="elevSide" role="img" aria-label="Mặt đứng bên phải"></svg></div><figcaption><b>Mặt đứng bên phải.</b> Cửa sổ phòng thờ, phòng ngủ 3 và bếp. Bên trái hình là phía trước nhà.</figcaption></figure>
+  </div>
+</section>
+
+<section aria-labelledby="hcost">
+  <div class="sec-head"><h2 id="hcost">Dự toán sơ bộ</h2><span class="eyebrow">Đơn vị: triệu đồng · mặt bằng giá 2026</span></div>
+  <div class="cost-grid">
+    <div class="sheet scroll-x" style="padding:4px 6px">
+      <table id="costTable"><thead><tr><th>Hạng mục</th><th class="num">Triệu đ</th></tr></thead><tbody></tbody><tfoot></tfoot></table>
+    </div>
+    <div style="display:grid;gap:14px;min-width:0">
+      <div class="callout">
+        <span class="eyebrow">Tổng dự toán</span>
+        <span class="bignum" id="costBig">—</span>
+        <span id="costPer" class="hint"></span>
+      </div>
+      <div class="callout">
+        <b>Đối chiếu cách tính theo m² quy đổi</b>
+        <span>Sàn 120 m² + móng băng 50% (60 m²) + mái ngói 60% (72 m²) = <b>252 m²</b> quy đổi.</span>
+        <ul>
+          <li>Phần thô + nhân công hoàn thiện 3,3–4,0 tr/m²: <b>832 – 1.008 tr</b>, chưa có vật tư hoàn thiện.</li>
+          <li>Trọn gói của công ty 4,8–8,0 tr/m²: <b>1,21 – 2,02 tỷ</b>.</li>
+        </ul>
+        <span>Muốn giữ quanh 1 tỷ thì nên thuê thợ địa phương làm phần thô và nhân công, chủ nhà tự mua vật tư hoàn thiện ở mức trung bình, chọn mái Nhật.</span>
+      </div>
+      <p class="hint">Chưa gồm: ép cọc khi đất yếu, tường rào và cổng, nội thất rời (giường, tủ, sofa), thiết bị điện tử, chi phí xin phép. Đơn giá thay đổi theo tỉnh, nên xin báo giá 2–3 nhà thầu địa phương.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="hnotes">
+  <div class="sec-head"><h2 id="hnotes">Thuyết minh phương án</h2><span class="eyebrow">Lý do bố trí</span></div>
+  <div class="notes">
+    <article><h3>Hiên thụt ở gian giữa</h3><p>Gian giữa lùi vào 1,5 m tạo hiên trước 6,3 m², che mưa nắng cho cửa chính. Hai gian bên nhô ra tạo dáng nhà 3 gian truyền thống, dầm hiên đỡ mái nên không cần thêm cột giữa.</p></article>
+    <article><h3>Phòng thờ yên tĩnh, tường đặc phía sau</h3><p>Phòng thờ ở gian phải phía trước, vào từ phòng khách bằng cửa 2 cánh. Bàn thờ tựa vào tường đặc, không chung tường với WC hay bếp. Phía sau là phòng ngủ 3.</p></article>
+    <article><h3>Hai WC chung một hộp kỹ thuật</h3><p>WC 1 (trong nhà, mở ra phòng ăn) và WC 2 (mở ra hiên sau) đặt sát nhau, chung tường 110. Đường cấp thoát nước gom về một chỗ, dùng chung một bể phốt, tiết kiệm ống và công.</p></article>
+    <article><h3>Bếp cuối nhà, gió xuyên phòng</h3><p>Bếp nối phòng ăn qua ô mở 1,2 m và có cửa sau ra vườn, nên khói và mùi không đi vào phòng khách. Trục cửa chính, vách lửng và cửa sổ sau phòng ăn tạo luồng gió xuyên suốt.</p></article>
+    <article><h3>Mỗi phòng ngủ có cửa sổ ngoài</h3><p>Ngủ 1 lấy sáng mặt tiền, ngủ 2 và ngủ 3 lấy sáng hai hồi nhà. Diện tích 12,9 – 13,7 m² đủ đặt giường 1,6 m và tủ áo 1,8 m.</p></article>
+    <article><h3>Kết cấu đơn giản, dễ thi công</h3><p>Móng băng BTCT, cột 220×220 tại các trục, nền tôn cao 0,45 m chống ngập. Mái kèo thép mạ kẽm lợp ngói, trần thạch cao chống nóng. Thợ ở quê làm quen kiểu nhà này.</p></article>
+    <article><h3>Cần chỉnh theo hướng đất</h3><p>Chưa có hướng nhà. Nếu hướng đẹp nằm bên trái, chỉ cần lật đối xứng: phòng thờ và bếp sang trái, các phòng ngủ sang phải. Hướng bàn thờ và bếp nên chọn theo tuổi gia chủ.</p></article>
+    <article><h3>Đây là bản vẽ phương án</h3><p>Đủ để bàn với gia đình và nhà thầu, chưa phải hồ sơ thi công. Trước khi xây cần kỹ sư tính móng theo địa chất, vẽ kết cấu, điện nước và làm thủ tục cấp phép tại xã.</p></article>
+  </div>
+</section>
+
+<section aria-labelledby="hdl">
+  <div class="sec-head"><h2 id="hdl">Tải bản vẽ</h2><span class="eyebrow">Ảnh PNG · PDF A4 ngang</span></div>
+  <p class="hint">Bấm vào ảnh để mở kích thước đầy đủ. File PDF gồm tất cả bản vẽ, mỗi trang một hình, in được trên khổ A4.</p>
+  <div><a class="dl-btn" href="nha-3-gian-12x10.pdf" download>Tải PDF đầy đủ (9 trang)</a></div>
+  <div class="gallery">
+    <a href="anh/01-phoi-canh-goc-cheo.png"><img src="anh/01-phoi-canh-goc-cheo.png" alt="Phối cảnh góc chéo" loading="lazy"><span>Phối cảnh góc chéo</span></a>
+    <a href="anh/02-phoi-canh-chinh-dien.png"><img src="anh/02-phoi-canh-chinh-dien.png" alt="Phối cảnh chính diện" loading="lazy"><span>Chính diện</span></a>
+    <a href="anh/03-phoi-canh-phia-sau.png"><img src="anh/03-phoi-canh-phia-sau.png" alt="Phối cảnh phía sau" loading="lazy"><span>Phía sau</span></a>
+    <a href="anh/04-phoi-canh-mai-thai.png"><img src="anh/04-phoi-canh-mai-thai.png" alt="Phương án mái Thái" loading="lazy"><span>Phương án mái Thái</span></a>
+    <a href="anh/05-noi-that-tu-tren.png"><img src="anh/05-noi-that-tu-tren.png" alt="Nội thất nhìn từ trên" loading="lazy"><span>Nội thất từ trên xuống</span></a>
+    <a href="anh/06-noi-that-goc-cheo.png"><img src="anh/06-noi-that-goc-cheo.png" alt="Nội thất góc chéo" loading="lazy"><span>Nội thất góc chéo</span></a>
+    <a href="anh/07-mat-bang.png"><img src="anh/07-mat-bang.png" alt="Mặt bằng tầng 1" loading="lazy"><span>Mặt bằng tầng 1</span></a>
+    <a href="anh/08-mat-dung.png"><img src="anh/08-mat-dung.png" alt="Mặt đứng" loading="lazy"><span>Mặt đứng</span></a>
+    <a href="anh/09-du-toan.png"><img src="anh/09-du-toan.png" alt="Dự toán" loading="lazy"><span>Dự toán</span></a>
+  </div>
+</section>
+
+<section aria-labelledby="hrefs">
+  <div class="sec-head"><h2 id="hrefs">Nguồn tham khảo</h2><span class="eyebrow">Mẫu nhà và ảnh thực tế · đơn giá</span></div>
+  <ul class="refs">
+    <li><div><a href="https://vietnamnet.vn/mau-nha-cap-4-120m2-3-phong-ngu-1-phong-tho-2012301.html" target="_blank" rel="noopener">Mẫu nhà cấp 4 120m² 3 phòng ngủ 1 phòng thờ</a><br><span>Đúng quy mô 120 m², có lưu ý không đặt phòng thờ sát WC, bếp.</span></div><em>Vietnamnet</em></li>
+    <li><div><a href="https://muaban.net/blog/120m2-cap-4-mai-thai-3-phong-ngu-580071/" target="_blank" rel="noopener">10+ mẫu nhà cấp 4 mái Thái 3 phòng ngủ 120m²</a><br><span>Ảnh phối cảnh mái Thái, có biến thể chữ U và có phòng thờ.</span></div><em>Muaban.net</em></li>
+    <li><div><a href="https://www.vtcnews.vn/top-nhung-mau-nha-cap-4-co-3-phong-ngu-500-trieu-pho-bien-nhat-hien-nay-ar769833.html" target="_blank" rel="noopener">Những mẫu nhà cấp 4 có 3 phòng ngủ</a><br><span>Có mẫu nhà 3 gian truyền thống, mái giật cấp, nhiều cửa sổ.</span></div><em>VTC News</em></li>
+    <li><div><a href="https://wiki.batdongsan.com.vn/wiki/nha-cap-4-nong-thon-don-gian-799596" target="_blank" rel="noopener">20+ mẫu nhà cấp 4 nông thôn đẹp, giá rẻ</a><br><span>Ảnh nhà thực tế ở nông thôn, gia đình 2–3 thế hệ.</span></div><em>Batdongsan</em></li>
+    <li><div><a href="https://wiki.batdongsan.com.vn/wiki/phong-tho-ket-hop-phong-khach-nha-cap-4-800765" target="_blank" rel="noopener">Phòng thờ kết hợp phòng khách nhà cấp 4</a><br><span>Cách bố trí bàn thờ, vách ngăn giữa khách và thờ.</span></div><em>Batdongsan</em></li>
+    <li><div><a href="https://meta.vn/hotro/mau-nha-cap-4-dep-6502" target="_blank" rel="noopener">15+ mẫu nhà cấp 4 cho nông thôn, nhà vườn</a><br><span>Tổng hợp mặt tiền mái Nhật, mái Thái đơn giản.</span></div><em>Meta.vn</em></li>
+    <li><div><a href="https://cafef.vn/6-mau-nha-cap-4-mai-nhat-dan-dau-xu-huong-2026-188261021083346928.chn" target="_blank" rel="noopener">6 mẫu nhà cấp 4 mái Nhật dẫn đầu xu hướng 2026</a><br><span>Ảnh mái Nhật dốc thấp, gần với phương án mặc định ở trên.</span></div><em>CafeF</em></li>
+    <li><div><a href="https://vtcnews.vn/xay-nha-1-tang-120m-het-bao-nhieu-tien-ar1028272.html" target="_blank" rel="noopener">Xây nhà 1 tầng 120m² hết bao nhiêu tiền (07/2026)</a><br><span>Phần thô 3,3–4,0 tr/m², trọn gói 4,8–8,0 tr/m², hệ số móng 30–50%.</span></div><em>VTC News</em></li>
+    <li><div><a href="https://vtcnews.vn/chi-phi-xay-nha-mai-nhat-1-tang-150m-khoang-bao-nhieu-ar1036822.html" target="_blank" rel="noopener">Chi phí xây nhà mái Nhật 1 tầng 150m² (08/2026)</a><br><span>Hệ số mái Nhật 50–70%, ví dụ tính 60%.</span></div><em>VTC News</em></li>
+    <li><div><a href="https://wiki.batdongsan.com.vn/wiki/nha-cap-4-mai-thai-761793" target="_blank" rel="noopener">Cách tính chi phí xây nhà cấp 4 mái Thái</a><br><span>Ba phương án dự toán cho nhà cấp 4 mái Thái.</span></div><em>Batdongsan</em></li>
+  </ul>
+  <div style="display:grid;gap:8px">
+    <span class="eyebrow">Từ khóa tìm thêm ảnh nhà thực tế</span>
+    <div class="kw"><code>nhà cấp 4 3 gian hiên thụt</code><code>nhà cấp 4 12x10 mái Nhật</code><code>nhà 3 gian mái Thái nông thôn</code><code>nhà cấp 4 120m2 3 phòng ngủ 1 phòng thờ</code></div>
+  </div>
+  <p class="foot">Bản vẽ và mô hình trên được dựng từ cùng một bộ số liệu kích thước, nên mặt bằng, mặt đứng và 3D luôn khớp nhau. Dự toán là ước tính tham khảo, không thay cho báo giá của nhà thầu.</p>
+</section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+"use strict";
+/* ---------- Số liệu chung (m), x: trái → phải nhìn từ ngoài vào; y: trước → sau ---------- */
+const FL=0.45, WALLH=3.6, DOOR_H=2.4, MAIN_H=2.8, OPEN_H=2.6, WIN_SILL=0.9, WIN_TOP=2.3, BEAM_BOT=3.2;
+const ROOFS={
+  nhat:{key:'nhat',name:'Mái Nhật',pitch:30,over:.8,tileA:'#5f666e',tileB:'#40454b',ridge:0x3a3e43,cost:130,area:182},
+  thai:{key:'thai',name:'Mái Thái',pitch:40,over:.9,tileA:'#b65a3c',tileB:'#843a25',ridge:0x6e2f1e,cost:175,area:212}
+};
+let roofKey='nhat', viewMode='ext';
+
+const WALLS=[
+  {a:[0,0],b:[3.9,0],t:.22,ops:[{k:'win',s:1.2,e:2.6}]},
+  {a:[3.9,0],b:[8.1,0],t:.22,h:0,beam:true},
+  {a:[8.1,0],b:[12,0],t:.22,ops:[{k:'win',s:9.4,e:10.8}]},
+  {a:[3.9,1.5],b:[8.1,1.5],t:.22,ops:[{k:'main',s:4.9,e:7.1,side:1}]},
+  {a:[0,0],b:[0,6.8],t:.22,ops:[{k:'win',s:4.4,e:5.6}]},
+  {a:[0,6.8],b:[0,8.4],t:.22,ops:[{k:'win',s:7.3,e:7.9,sill:1.6}]},
+  {a:[0,8.4],b:[0,10],t:.22,h:1.0,beam:true},
+  {a:[0,10],b:[2.2,10],t:.22,h:1.0,beam:true},
+  {a:[2.2,10],b:[3.9,10],t:.22,h:0,beam:true},
+  {a:[3.9,10],b:[12,10],t:.22,ops:[{k:'win',s:5.3,e:6.7},{k:'door',s:8.35,e:9.15,hinge:'s',side:-1,ext:true}]},
+  {a:[12,0],b:[12,10],t:.22,ops:[{k:'win',s:1.0,e:2.4},{k:'win',s:4.0,e:5.2},{k:'win',s:7.6,e:8.8,sill:1.1}]},
+  {a:[3.9,0],b:[3.9,10],t:.22,ops:[{k:'door',s:2.5,e:3.3,hinge:'e',side:-1},{k:'door',s:5.85,e:6.65,hinge:'s',side:-1},{k:'door',s:7.0,e:7.7,hinge:'s',side:-1},{k:'door',s:8.8,e:9.6,hinge:'e',side:1,ext:true}]},
+  {a:[8.1,0],b:[8.1,10],t:.22,ops:[{k:'door2',s:1.6,e:2.8,side:1},{k:'door',s:4.6,e:5.4,hinge:'e',side:1},{k:'open',s:7.3,e:8.5}]},
+  {a:[0,3.5],b:[3.9,3.5],t:.11},
+  {a:[0,6.8],b:[3.9,6.8],t:.11},
+  {a:[2.0,6.8],b:[2.0,8.4],t:.11},
+  {a:[0,8.4],b:[3.9,8.4],t:.22,ops:[{k:'door',s:0.9,e:1.6,hinge:'e',side:-1},{k:'win',s:2.6,e:3.2,sill:1.6}]},
+  {a:[3.9,5.7],b:[8.1,5.7],t:.11,ops:[{k:'open',s:5.0,e:7.0}]},
+  {a:[8.1,3.4],b:[12,3.4],t:.11},
+  {a:[8.1,6.8],b:[12,6.8],t:.11}
+];
+const COLS=[[0,0],[3.9,0],[8.1,0],[12,0],[3.9,1.5],[8.1,1.5],[0,3.5],[0,6.8],[12,3.4],[12,6.8],[0,8.4],[3.9,8.4],[0,10],[2.2,10],[3.9,10],[8.1,10],[12,10],[3.9,5.7],[8.1,5.7]];
+const ZONES={live:'Sinh hoạt',sleep:'Phòng ngủ',tho:'Thờ cúng',svc:'Bếp',wet:'Vệ sinh',out:'Hiên'};
+const ROOMS=[
+  {n:'Hiên trước',r:[3.9,0,8.1,1.5],z:'out',lp:[6,.75]},
+  {n:'Phòng khách',r:[3.9,1.5,8.1,5.7],z:'live',lp:[6,5.32]},
+  {n:'Phòng ăn',r:[3.9,5.7,8.1,10],z:'live',lp:[6,6.75]},
+  {n:'Phòng thờ',r:[8.1,0,12,3.4],z:'tho',lp:[10.05,1.2]},
+  {n:'Phòng ngủ 3',r:[8.1,3.4,12,6.8],z:'sleep',lp:[10.6,5.95]},
+  {n:'Bếp',r:[8.1,6.8,12,10],z:'svc',lp:[9.9,8.4]},
+  {n:'Phòng ngủ 1',r:[0,0,3.9,3.5],z:'sleep',lp:[1.95,2.5]},
+  {n:'Phòng ngủ 2',r:[0,3.5,3.9,6.8],z:'sleep',lp:[1.8,5.95]},
+  {n:'WC 2',r:[0,6.8,2.0,8.4],z:'wet',lp:[1.3,7.45],note:'cửa ra hiên sau'},
+  {n:'WC 1',r:[2.0,6.8,3.9,8.4],z:'wet',lp:[3.1,7.3]},
+  {n:'Hiên sau',r:[0,8.4,3.9,10],z:'out',lp:[2.25,9.35]}
+];
+const FURN=[
+  {t:'bed',x:.11,y:.5,w:2.0,d:1.6,head:'w'},{t:'ward',x:.2,y:2.85,w:1.8,d:.55},{t:'desk',x:3.2,y:.2,w:.55,d:1.1},
+  {t:'bed',x:1.0,y:3.56,w:1.6,d:2.0,head:'s'},{t:'ward',x:.2,y:6.15,w:1.8,d:.55},
+  {t:'bed',x:9.8,y:3.46,w:1.6,d:2.0,head:'s'},{t:'ward',x:9.6,y:6.15,w:2.0,d:.55},
+  {t:'altar',x:9.25,y:2.6,w:1.7,d:.7},{t:'ltable',x:9.6,y:1.95,w:1.0,d:.45},
+  {t:'ctable',x:5.3,y:3.0,w:1.4,d:.8},{t:'sofa',x:5.1,y:4.2,w:1.8,d:.55},
+  {t:'chair',x:4.45,y:3.1,w:.6,d:.6,back:'w'},{t:'chair',x:6.95,y:3.1,w:.6,d:.6,back:'e'},
+  {t:'dtable',x:5.2,y:7.4,w:1.6,d:.9},
+  {t:'fridge',x:9.0,y:6.92,w:.7,d:.68},
+  {t:'counter',x:11.28,y:7.5,w:.6,d:2.38},{t:'counter',x:9.3,y:9.28,w:1.98,d:.6},
+  {t:'stove',x:11.33,y:8.2,w:.5,d:.7},{t:'ksink',x:9.8,y:9.33,w:.8,d:.5},
+  {t:'wc',x:2.12,y:6.95,w:.7,d:.42},{t:'lav',x:2.12,y:7.8,w:.45,d:.5},{t:'shower',x:2.95,y:7.75,w:.85,d:.55},
+  {t:'wc',x:.12,y:6.95,w:.7,d:.42},{t:'shower',x:.12,y:7.5,w:.7,d:.75},{t:'lav',x:1.4,y:6.92,w:.5,d:.42},
+  {t:'washer',x:.2,y:8.6,w:.6,d:.6},{t:'tub',x:.9,y:8.62,w:.6,d:.5}
+];
+
+const vi=(n,d=1)=>n.toLocaleString('vi-VN',{minimumFractionDigits:d,maximumFractionDigits:d});
+const r3=v=>+(+v).toFixed(3);
+function wallInfo(w){
+  const horiz=w.a[1]===w.b[1];
+  const s0=horiz?Math.min(w.a[0],w.b[0]):Math.min(w.a[1],w.b[1]);
+  const s1=horiz?Math.max(w.a[0],w.b[0]):Math.max(w.a[1],w.b[1]);
+  return {horiz,s0,s1,c:horiz?w.a[1]:w.a[0],H:w.h===undefined?WALLH:w.h,ht:w.t/2,ops:(w.ops||[]).slice().sort((p,q)=>p.s-q.s)};
+}
+
+/* ---------- 2D: mặt bằng ---------- */
+const sy=y=>10-y;
+const rect=(x1,y1,x2,y2,cls)=>`<rect class="${cls}" x="${r3(Math.min(x1,x2))}" y="${r3(sy(Math.max(y1,y2)))}" width="${r3(Math.abs(x2-x1))}" height="${r3(Math.abs(y2-y1))}"/>`;
+const line=(x1,y1,x2,y2,cls)=>`<line class="${cls}" x1="${r3(x1)}" y1="${r3(sy(y1))}" x2="${r3(x2)}" y2="${r3(sy(y2))}"/>`;
+const circ=(x,y,r,cls)=>`<circle class="${cls}" cx="${r3(x)}" cy="${r3(sy(y))}" r="${r3(r)}"/>`;
+const ell=(x,y,rx,ry,cls)=>`<ellipse class="${cls}" cx="${r3(x)}" cy="${r3(sy(y))}" rx="${r3(rx)}" ry="${r3(ry)}"/>`;
+const wrect=(I,u1,u2,cls)=>I.horiz?rect(u1,I.c-I.ht,u2,I.c+I.ht,cls):rect(I.c-I.ht,u1,I.c+I.ht,u2,cls);
+const wpt=(I,u,v)=>I.horiz?[u,I.c+v]:[I.c+v,u];
+
+function doorSym(I,h,j,side){
+  const len=Math.abs(j-h), H=wpt(I,h,0), T=wpt(I,h,side*len), J=wpt(I,j,0);
+  const hx=H[0],hy=sy(H[1]),tx=T[0],ty=sy(T[1]),jx=J[0],jy=sy(J[1]);
+  const cross=(tx-hx)*(jy-hy)-(ty-hy)*(jx-hx);
+  return `<line class="leaf" x1="${r3(hx)}" y1="${r3(hy)}" x2="${r3(tx)}" y2="${r3(ty)}"/><path class="swing" d="M${r3(tx)} ${r3(ty)} A${r3(len)} ${r3(len)} 0 0 ${cross>0?1:0} ${r3(jx)} ${r3(jy)}"/>`;
+}
+function fur2d(f){
+  const {x,y,w,d}=f, X=x+w, Y=y+d; let s=rect(x,y,X,Y,f.t==='altar'||f.t==='ltable'?'altar':'fur');
+  switch(f.t){
+    case 'bed':
+      if(f.head==='w') s+=rect(x+.08,y+.1,x+.43,y+d/2-.05,'fur')+rect(x+.08,y+d/2+.05,x+.43,Y-.1,'fur')+line(x+.75,y,x+.75,Y,'furl');
+      else s+=rect(x+.1,y+.08,x+w/2-.05,y+.43,'fur')+rect(x+w/2+.05,y+.08,X-.1,y+.43,'fur')+line(x,y+.75,X,y+.75,'furl');
+      break;
+    case 'ward': s+=line(x,y,X,Y,'furl')+line(x,Y,X,y,'furl'); break;
+    case 'altar': s+=rect(x+.08,y+.08,X-.08,Y-.08,'furl'); break;
+    case 'sofa': s+=line(x,Y-.18,X,Y-.18,'furl')+line(x+.15,y,x+.15,Y-.18,'furl')+line(X-.15,y,X-.15,Y-.18,'furl'); break;
+    case 'chair': s+=f.back==='w'?line(x+.13,y,x+.13,Y,'furl'):line(X-.13,y,X-.13,Y,'furl'); break;
+    case 'dtable': for(let i=0;i<3;i++){const cx=x+w*(i+.5)/3-.2; s+=rect(cx,y-.45,cx+.4,y-.05,'fur')+rect(cx,Y+.05,cx+.4,Y+.45,'fur');} break;
+    case 'fridge': s+=line(x,y,X,Y,'furl'); break;
+    case 'stove': s+=circ(x+w/2,y+d*.28,.12,'furl')+circ(x+w/2,y+d*.72,.12,'furl'); break;
+    case 'ksink': case 'tub': s+=rect(x+.07,y+.07,X-.07,Y-.07,'furl'); break;
+    case 'wc': s+=rect(x,y,x+.18,Y,'fur')+ell(x+.18+(w-.18)/2,y+d/2,(w-.18)/2-.02,d/2-.04,'furl'); break;
+    case 'lav': s+=ell(x+w/2,y+d/2,w/2-.07,d/2-.07,'furl'); break;
+    case 'shower': s+=line(x,y,X,Y,'furl')+line(x,Y,X,y,'furl')+circ(x+w/2,y+d/2,.05,'fur'); break;
+    case 'washer': s+=circ(x+w/2,y+d/2,Math.min(w,d)/2-.08,'furl'); break;
+  }
+  return s;
+}
+function dimRow(xs,Y,top){
+  const ext=top?.25:-.25; let s=`<line class="dim" x1="${r3(xs[0]-.25)}" y1="${Y}" x2="${r3(xs[xs.length-1]+.25)}" y2="${Y}"/>`;
+  xs.forEach(x=>{s+=`<line class="dimext" x1="${x}" y1="${r3(Y-ext*.4)}" x2="${x}" y2="${r3(Y+ext)}"/><line class="tick" x1="${r3(x-.08)}" y1="${r3(Y+.08)}" x2="${r3(x+.08)}" y2="${r3(Y-.08)}"/>`;});
+  for(let i=0;i<xs.length-1;i++) s+=`<text class="dt" x="${r3((xs[i]+xs[i+1])/2)}" y="${r3(Y-.08)}">${Math.round((xs[i+1]-xs[i])*1000)}</text>`;
+  return s;
+}
+function dimCol(ys,X,left){ // ys: plan y
+  const ext=left?.25:-.25; const a=sy(ys[0]),b=sy(ys[ys.length-1]);
+  let s=`<line class="dim" x1="${X}" y1="${r3(a+.25)}" x2="${X}" y2="${r3(b-.25)}"/>`;
+  ys.forEach(y=>{const Y=sy(y); s+=`<line class="dimext" x1="${r3(X-ext*.4)}" y1="${r3(Y)}" x2="${r3(X+ext)}" y2="${r3(Y)}"/><line class="tick" x1="${r3(X-.08)}" y1="${r3(Y+.08)}" x2="${r3(X+.08)}" y2="${r3(Y-.08)}"/>`;});
+  for(let i=0;i<ys.length-1;i++){const m=sy((ys[i]+ys[i+1])/2); s+=`<text class="dt" transform="translate(${r3(X-.08)} ${r3(m)}) rotate(-90)">${Math.round((ys[i+1]-ys[i])*1000)}</text>`;}
+  return s;
+}
+function drawPlan(){
+  let s=`<defs><pattern id="hatch" width=".16" height=".16" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hatchline" x1="0" y1="0" x2="0" y2=".16"/></pattern></defs>`;
+  s+=rect(-2.1,-1.0,14.1,12.0,'z-out" style="fill:var(--sheet)');
+  ROOMS.forEach(r=>{s+=rect(r.r[0],r.r[1],r.r[2],r.r[3],'z-'+r.z);});
+  // bậc tam cấp
+  s+=rect(4.4,-.9,7.6,0,'step')+line(4.4,-.3,7.6,-.3,'step')+line(4.4,-.6,7.6,-.6,'step');
+  s+=rect(2.2,10,3.9,10.6,'step')+line(2.2,10.3,3.9,10.3,'step');
+  FURN.forEach(f=>{s+=fur2d(f);});
+  WALLS.forEach(w=>{
+    const I=wallInfo(w);
+    if(I.H===0){const a=wpt(I,I.s0,0),b=wpt(I,I.s1,0); s+=line(a[0],a[1],b[0],b[1],'beam'); return;}
+    const cls=I.H<WALLH?'lowwall':'wall'; let u=I.s0-I.ht;
+    I.ops.forEach(o=>{s+=wrect(I,u,o.s,cls); u=o.e;});
+    s+=wrect(I,u,I.s1+I.ht,cls);
+    I.ops.forEach(o=>{
+      if(o.k==='win'){const a=wpt(I,o.s,0),b=wpt(I,o.e,0); s+=wrect(I,o.s,o.e,'winframe')+line(a[0],a[1],b[0],b[1],'winglass');}
+      else if(o.k==='door') s+=o.hinge==='s'?doorSym(I,o.s,o.e,o.side):doorSym(I,o.e,o.s,o.side);
+      else if(o.k==='door2'||o.k==='main'){const m=(o.s+o.e)/2; s+=doorSym(I,o.s,m,o.side)+doorSym(I,o.e,m,o.side);}
+    });
+  });
+  COLS.forEach(c=>{s+=rect(c[0]-.13,c[1]-.13,c[0]+.13,c[1]+.13,'col');});
+  ROOMS.forEach(r=>{
+    const a=(r.r[2]-r.r[0])*(r.r[3]-r.r[1]); const [lx,ly]=r.lp||[(r.r[0]+r.r[2])/2,(r.r[1]+r.r[3])/2];
+    s+=`<text class="rl" x="${lx}" y="${r3(sy(ly))}">${r.n}</text><text class="ra" x="${lx}" y="${r3(sy(ly)+.28)}">${vi(a,1)} m²</text>`;
+  });
+  // trục
+  [[0,'1'],[3.9,'2'],[8.1,'3'],[12,'4']].forEach(([x,t])=>{s+=`<line class="axis-l" x1="${x}" y1="-1.72" x2="${x}" y2="-.2"/><circle class="axis-c" cx="${x}" cy="-2.0" r=".28"/><text class="axis-t" x="${x}" y="-2.0">${t}</text>`;});
+  s+=dimRow([0,3.9,8.1,12],-.75,true)+dimRow([0,12],-1.35,true);
+  s+=dimRow([0,1.2,2.6,3.9,4.9,7.1,8.1,9.4,10.8,12],11.35,false)+dimRow([0,3.9,8.1,12],11.95,false);
+  s+=dimCol([0,3.5,6.8,8.4,10],-.75,true)+dimCol([0,10],-1.35,true);
+  s+=dimCol([0,3.4,6.8,10],12.75,false)+dimCol([0,1.5,5.7,10],13.35,false);
+  s+=`<text class="note" x="6" y="12.55" text-anchor="middle">▲ LỐI VÀO CHÍNH · SÂN TRƯỚC</text>`;
+  const svg=document.getElementById('planSvg'); svg.setAttribute('viewBox','-2.1 -2.45 16.2 15.25'); svg.innerHTML=s;
+}
+function drawLegendAndTable(){
+  document.getElementById('legend').innerHTML=Object.entries(ZONES).map(([k,v])=>`<span><i style="background:var(--z-${k})"></i>${v}</span>`).join('');
+  let tot=0;
+  document.querySelector('#roomTable tbody').innerHTML=ROOMS.map(r=>{
+    const w=r.r[2]-r.r[0], d=r.r[3]-r.r[1], a=w*d; tot+=a;
+    return `<tr><td><span class="swatch" style="background:var(--z-${r.z})"></span>${r.n}${r.note?` <span class="hint">(${r.note})</span>`:''}</td><td class="num">${vi(w,1)} × ${vi(d,1)}</td><td class="num">${vi(a,2)}</td></tr>`;
+  }).join('');
+  document.querySelector('#roomTable tfoot').innerHTML=`<tr><td>Tổng (tim tường)</td><td class="num">12,0 × 10,0</td><td class="num">${vi(tot,2)}</td></tr>`;
+}
+
+/* ---------- 2D: mặt đứng ---------- */
+const er=(x1,z1,x2,z2,cls,st='')=>`<rect class="${cls}" x="${r3(x1)}" y="${r3(-z2)}" width="${r3(x2-x1)}" height="${r3(z2-z1)}"${st?` style="${st}"`:''}/>`;
+const el=(x1,z1,x2,z2,cls)=>`<line class="${cls}" x1="${r3(x1)}" y1="${r3(-z1)}" x2="${r3(x2)}" y2="${r3(-z2)}"/>`;
+function roofGeom(){const R=ROOFS[roofKey], tp=Math.tan(R.pitch*Math.PI/180), o=R.over; return {R,tp,o,eave:WALLH-o*tp,ridge:WALLH+5*tp};}
+function lvl(x,z,txt){return `<path class="e-lvl" d="M${r3(x)} ${r3(-z)} l-.14 -.2 h.28 z"/>${el(x-.5,z,x+1.6,z,'e-thin')}<text class="e-lt" x="${r3(x+.22)}" y="${r3(-z-.08)}">${txt}</text>`;}
+const fz=z=>(z>=0?(z===0?'±':'+'):'−')+Math.abs(z).toFixed(3);
+function winE(x1,x2,z1,z2){const m=(x1+x2)/2; return er(x1,z1,x2,z2,'e-win')+el(m,z1,m,z2,'e-thin')+el(x1,z2-.5,x2,z2-.5,'e-thin')+er(x1-.08,z1-.06,x2+.08,z1,'e-fascia');}
+function roofE(x0,x1,rx0,rx1,g){
+  const fill=`fill:var(--el-roof-${roofKey})`; let s='';
+  s+=er(x0+g.o,g.eave-.4,x1-g.o,g.eave,'e-shade');
+  s+=`<polygon class="e-roof" style="${fill}" points="${r3(x0)},${r3(-g.eave)} ${r3(x1)},${r3(-g.eave)} ${r3(rx1)},${r3(-g.ridge)} ${r3(rx0)},${r3(-g.ridge)}"/>`;
+  for(let z=g.eave+.28;z<g.ridge-.05;z+=.28){const k=(z-g.eave)/(g.ridge-g.eave); s+=el(x0+k*(rx0-x0),z,x1-k*(x1-rx1),z,'e-tile');}
+  s+=`<polygon class="e-roof" style="fill:none" points="${r3(x0)},${r3(-g.eave)} ${r3(x1)},${r3(-g.eave)} ${r3(rx1)},${r3(-g.ridge)} ${r3(rx0)},${r3(-g.ridge)}"/>`;
+  s+=er(x0,g.eave-.16,x1,g.eave,'e-fascia');
+  return s;
+}
+function elevDims(xs,z){
+  let s=el(xs[0]-.25,z,xs[xs.length-1]+.25,z,'dim');
+  xs.forEach(x=>{s+=el(x,z+.2,x,z-.1,'dimext')+el(x-.08,z-.08,x+.08,z+.08,'tick');});
+  for(let i=0;i<xs.length-1;i++) s+=`<text class="dt" x="${r3((xs[i]+xs[i+1])/2)}" y="${r3(-z-.08)}">${Math.round((xs[i+1]-xs[i])*1000)}</text>`;
+  return s;
+}
+function drawElevations(){
+  const g=roofGeom();
+  // mặt đứng chính
+  let s=er(-2.3,-.75,14.3,-.45,'e-ground')+el(-2.3,-.45,14.3,-.45,'e-gline');
+  s+=er(-.11,-.45,12.11,0,'e-plinth');
+  s+=er(4.4,-.45,7.6,-.3,'e-step')+er(4.4,-.3,7.6,-.15,'e-step')+er(4.4,-.15,7.6,0,'e-step');
+  s+=er(3.9,0,8.1,BEAM_BOT,'e-recess');
+  s+=er(4.9,0,7.1,MAIN_H,'e-door'); for(let k=1;k<4;k++){const x=4.9+k*.55; s+=el(x,0,x,MAIN_H,'e-thin');}
+  s+=el(4.9,2.2,7.1,2.2,'e-thin');
+  s+=er(3.9,BEAM_BOT,8.1,WALLH,'e-wall')+er(-.11,0,4.01,WALLH,'e-wall')+er(7.99,0,12.11,WALLH,'e-wall');
+  s+=winE(1.2,2.6,WIN_SILL,WIN_TOP)+winE(9.4,10.8,WIN_SILL,WIN_TOP);
+  s+=roofE(-g.o,12+g.o,5,7,g);
+  const lx=12+g.o+.35;
+  s+=lvl(lx,g.ridge,fz(+g.ridge.toFixed(3)))+lvl(lx,g.eave,fz(+g.eave.toFixed(3)))+lvl(lx,0,'±0.000')+lvl(lx,-.45,'−0.450');
+  s+=elevDims([0,3.9,8.1,12],-1.2);
+  let svg=document.getElementById('elevFront'); svg.setAttribute('viewBox',`-2.3 ${r3(-g.ridge-.7)} 17.4 ${r3(g.ridge+.7+1.65)}`); svg.innerHTML=s;
+  // mặt đứng bên phải (trục ngang = y, phía trước ở bên trái)
+  s=er(-2.3,-.75,12.3,-.45,'e-ground')+el(-2.3,-.45,12.3,-.45,'e-gline');
+  s+=er(-.11,-.45,10.11,0,'e-plinth')+er(-.11,0,10.11,WALLH,'e-wall');
+  s+=winE(1.0,2.4,WIN_SILL,WIN_TOP)+winE(4.0,5.2,WIN_SILL,WIN_TOP)+winE(7.6,8.8,1.1,WIN_TOP);
+  s+=roofE(-g.o,10+g.o,5,5,g);
+  const lx2=10+g.o+.35;
+  s+=lvl(lx2,g.ridge,fz(+g.ridge.toFixed(3)))+lvl(lx2,g.eave,fz(+g.eave.toFixed(3)))+lvl(lx2,0,'±0.000');
+  s+=elevDims([0,3.4,6.8,10],-1.2);
+  svg=document.getElementById('elevSide'); svg.setAttribute('viewBox',`-2.3 ${r3(-g.ridge-.7)} 15.4 ${r3(g.ridge+.7+1.65)}`); svg.innerHTML=s;
+}
+
+/* ---------- Dự toán ---------- */
+function drawCost(){
+  const R=ROOFS[roofKey];
+  const rows=[
+    ['Đào đất, móng băng BTCT, giằng móng, tôn nền cát và đổ bê tông nền',165],
+    ['Cột 220×220, dầm, giằng tường BTCT',120],
+    ['Xây tường gạch 220/110, trát trong và ngoài',120],
+    [`${R.name}: kèo thép mạ kẽm, ngói, diềm mái (~${R.area} m² mặt mái dốc)`,R.cost],
+    ['Trần thạch cao khung chìm (~105 m²)',22],
+    ['Lát nền gạch 60×60, ốp tường WC, đá bậc tam cấp',60],
+    ['Bả matit, sơn nước trong nhà, sơn chống thấm ngoài nhà',50],
+    ['Cửa chính gỗ 4 cánh, cửa phòng, cửa sổ nhôm kính',95],
+    ['Điện, nước, bể phốt, bồn nước, thiết bị 2 WC',85],
+    ['Tủ bếp cơ bản, bàn thờ và hoàn thiện phòng thờ',55],
+    ['Sân gạch trước nhà, rãnh thoát nước',45]
+  ];
+  const sub=rows.reduce((a,r)=>a+r[1],0), dp=Math.round(sub*.05), tot=sub+dp;
+  document.querySelector('#costTable tbody').innerHTML=rows.map(r=>`<tr><td>${r[0]}</td><td class="num">${vi(r[1],0)}</td></tr>`).join('')+`<tr><td>Dự phòng phát sinh 5%</td><td class="num">${vi(dp,0)}</td></tr>`;
+  document.querySelector('#costTable tfoot').innerHTML=`<tr><td>Tổng cộng</td><td class="num">${vi(tot,0)}</td></tr>`;
+  document.getElementById('costBig').textContent=`≈ ${vi(tot,0)} triệu đồng`;
+  document.getElementById('costPer').textContent=`${R.name} · khoảng ${vi(tot/120,1)} triệu/m² sàn · ${vi(tot/252,2)} triệu/m² quy đổi`;
+  document.getElementById('tbCost').textContent=`≈ ${vi(tot,0)} triệu (${R.name.toLowerCase()})`;
+}
+
+/* ---------- 3D ---------- */
+let renderer,scene,camera,controls,houseG,roofG,labelG,M,box3d,hemi,sun;
+function pbox(x1,x2,y1,y2,z1,z2,mat,g,shadow){
+  if(x2-x1<1e-3||y2-y1<1e-3||z2-z1<1e-3) return null;
+  const m=new THREE.Mesh(new THREE.BoxGeometry(x2-x1,z2-z1,y2-y1),mat);
+  m.position.set((x1+x2)/2-6,(z1+z2)/2,5-(y1+y2)/2);
+  m.castShadow=shadow!==false; m.receiveShadow=true; (g||houseG).add(m); return m;
+}
+const V=(x,y,z)=>new THREE.Vector3(x-6,z,5-y);
+function clearGroup(g){ while(g.children.length){const c=g.children.pop(); if(c.geometry)c.geometry.dispose(); if(c.material&&c.material.map&&c.userData.own){c.material.map.dispose();c.material.dispose();}} }
+function mats(){
+  const S=(c,o)=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.85,metalness:0},o||{}));
+  M={wall:S(0xf0ebe1),plinth:S(0x8d8981),step:S(0xbdb6aa),
+     floor:{live:S(0xd6cbb6),sleep:S(0xc39a6b),tho:S(0xa77450),svc:S(0xcfc7b8),wet:S(0xadbcc0),out:S(0xa8a297)},
+     glass:S(0x9cc2d6,{transparent:true,opacity:.42,roughness:.1,metalness:.2}),frame:S(0x3a3f44),
+     wood:S(0x7d4b2a),woodL:S(0xb48a60),red:S(0x7a2c1c),white:S(0xf5f5f2,{roughness:.4}),steel:S(0xb9bdc1,{metalness:.3,roughness:.4}),
+     dark:S(0x2c2f33),fabric:S(0xe8e2d4),cab:S(0xd9d2c5),yard:S(0x9e8f80),grass:S(0x86a05f),trunk:S(0x7a6852),leaf:S(0x4d7a39),leaf2:S(0x5d8a3f),path:S(0xc9c0b2)};
+}
+function buildHouse(){
+  clearGroup(houseG);
+  const cap=viewMode==='cut'?1.2:WALLH;
+  pbox(-.11,12.11,-.11,10.11,0,FL,M.plinth);
+  ROOMS.forEach(r=>pbox(r.r[0],r.r[2],r.r[1],r.r[3],FL,FL+.012,M.floor[r.z],houseG,false));
+  pbox(4.4,7.6,-.9,-.11,0,.15,M.step); pbox(4.4,7.6,-.6,-.11,.15,.3,M.step); pbox(4.4,7.6,-.3,-.11,.3,.45,M.step);
+  pbox(2.2,3.9,10.11,10.7,0,.15,M.step); pbox(2.2,3.9,10.11,10.4,.15,.3,M.step);
+  WALLS.forEach(w=>{
+    const I=wallInfo(w);
+    const seg=(u1,u2,z1,z2,mat,th)=>{z2=Math.min(z2,cap); if(z2<=z1)return; const t=th||I.ht; if(I.horiz) pbox(u1,u2,I.c-t,I.c+t,FL+z1,FL+z2,mat||M.wall); else pbox(I.c-t,I.c+t,u1,u2,FL+z1,FL+z2,mat||M.wall);};
+    if(I.H>0){
+      let u=I.s0-I.ht;
+      I.ops.forEach(o=>{
+        seg(u,o.s,0,I.H); u=o.e;
+        const top=o.k==='win'?WIN_TOP:o.k==='main'?MAIN_H:o.k==='open'?OPEN_H:DOOR_H;
+        seg(o.s,o.e,top,I.H);
+        if(o.k==='win'){
+          const sill=o.sill||WIN_SILL; seg(o.s,o.e,0,sill);
+          seg(o.s,o.e,sill,top,M.glass,.015);
+          const m=(o.s+o.e)/2; seg(m-.025,m+.025,sill,top,M.frame,.04);
+          seg(o.s,o.s+.05,sill,top,M.frame,.045); seg(o.e-.05,o.e,sill,top,M.frame,.045);
+          seg(o.s,o.e,sill,sill+.05,M.frame,.045); seg(o.s,o.e,top-.05,top,M.frame,.045);
+        } else if(o.k==='main'){
+          const q=(o.e-o.s)/4; for(let k=0;k<4;k++) seg(o.s+k*q+.01,o.s+(k+1)*q-.01,0,MAIN_H,M.wood,.03);
+        } else if(o.k==='door'||o.k==='door2'){
+          const leaves=o.k==='door2'?[[o.s,(o.s+o.e)/2],[o.e,(o.s+o.e)/2]]:[o.hinge==='s'?[o.s,o.e]:[o.e,o.s]];
+          leaves.forEach(([h,j])=>{
+            const zt=Math.min(DOOR_H,cap);
+            if(o.ext){ seg(Math.min(h,j)+.01,Math.max(h,j)-.01,0,DOOR_H,M.wood,.03); return; }
+            const len=Math.abs(j-h), du=Math.sign(j-h)*.04, u1=Math.min(h,h+du), u2=Math.max(h,h+du);
+            const v1=I.c+Math.min(0,o.side*len), v2=I.c+Math.max(0,o.side*len);
+            if(I.horiz) pbox(u1,u2,v1,v2,FL,FL+zt,M.woodL); else pbox(v1,v2,u1,u2,FL,FL+zt,M.woodL);
+          });
+        }
+      });
+      seg(u,I.s1+I.ht,0,I.H);
+    }
+    if(w.beam&&cap>=WALLH) seg(I.s0-I.ht,I.s1+I.ht,BEAM_BOT,WALLH);
+  });
+  [[0,10],[2.2,10]].forEach(([x,y])=>pbox(x-.11,x+.11,y-.11,y+.11,FL,FL+cap,M.wall));
+  FURN.forEach(fur3d);
+}
+function fur3d(f){
+  const {x,y,w,d}=f, X=x+w, Y=y+d, b=FL+.012;
+  const P=(x1,x2,y1,y2,z1,z2,m)=>pbox(x1,x2,y1,y2,b+z1,b+z2,m);
+  switch(f.t){
+    case 'bed': P(x,X,y,Y,0,.3,M.woodL); P(x+.03,X-.03,y+.03,Y-.03,.3,.5,M.fabric);
+      if(f.head==='w') P(x,x+.07,y,Y,0,.95,M.wood); else P(x,X,y,y+.07,0,.95,M.wood); break;
+    case 'ward': P(x,X,y,Y,0,2.1,M.woodL); break;
+    case 'desk': P(x,X,y,Y,.7,.75,M.woodL); P(x,x+.05,y,Y,0,.7,M.woodL); P(X-.05,X,y,Y,0,.7,M.woodL); break;
+    case 'altar': P(x,X,y,Y,0,1.1,M.red); P(x+.12,X-.12,y+d*.45,Y,1.1,1.8,M.red); break;
+    case 'ltable': P(x,X,y,Y,0,.9,M.red); break;
+    case 'ctable': P(x,X,y,Y,.4,.46,M.wood); P(x+.1,X-.1,y+.1,Y-.1,0,.4,M.wood); break;
+    case 'sofa': P(x,X,y,Y,0,.45,M.wood); P(x,X,Y-.12,Y,.45,1.0,M.wood); P(x,x+.08,y,Y,.45,.7,M.wood); P(X-.08,X,y,Y,.45,.7,M.wood); break;
+    case 'chair': P(x,X,y,Y,0,.45,M.wood); if(f.back==='w') P(x,x+.08,y,Y,.45,1.0,M.wood); else P(X-.08,X,y,Y,.45,1.0,M.wood); break;
+    case 'dtable': P(x,X,y,Y,.71,.76,M.woodL); P(x+.08,X-.08,y+.08,Y-.08,0,.71,M.woodL);
+      for(let i=0;i<3;i++){const cx=x+w*(i+.5)/3-.2; P(cx,cx+.4,y-.45,y-.05,0,.45,M.wood); P(cx,cx+.4,y-.45,y-.38,.45,.9,M.wood); P(cx,cx+.4,Y+.05,Y+.45,0,.45,M.wood); P(cx,cx+.4,Y+.38,Y+.45,.45,.9,M.wood);} break;
+    case 'fridge': P(x,X,y,Y,0,1.75,M.steel); break;
+    case 'counter': P(x,X,y,Y,0,.82,M.cab); P(x,X,y,Y,.82,.86,M.dark); break;
+    case 'stove': P(x,X,y,Y,.86,.89,M.dark); break;
+    case 'ksink': P(x,X,y,Y,.86,.87,M.steel); break;
+    case 'wc': P(x,x+.18,y,Y,0,.75,M.white); P(x+.18,X,y+.04,Y-.04,0,.4,M.white); break;
+    case 'lav': P(x,X,y,Y,.72,.85,M.white); P(x+w/2-.08,x+w/2+.08,y+d/2-.08,y+d/2+.08,0,.72,M.white); break;
+    case 'shower': P(x,X,y,Y,0,.04,M.white); break;
+    case 'washer': P(x,X,y,Y,0,.85,M.white); break;
+    case 'tub': P(x,X,y,Y,0,.8,M.steel); break;
+  }
+}
+function tileTexture(R){
+  const c=document.createElement('canvas'); c.width=c.height=64; const g=c.getContext('2d');
+  g.fillStyle=R.tileA; g.fillRect(0,0,64,64);
+  const grd=g.createLinearGradient(0,0,0,64); grd.addColorStop(0,'rgba(255,255,255,.10)'); grd.addColorStop(.75,'rgba(0,0,0,0)'); grd.addColorStop(1,'rgba(0,0,0,.25)');
+  g.fillStyle=grd; g.fillRect(0,0,64,64);
+  g.fillStyle=R.tileB; g.fillRect(0,56,64,8); g.fillRect(0,0,3,64);
+  const t=new THREE.CanvasTexture(c); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.anisotropy=4; return t;
+}
+function buildRoof(){
+  clearGroup(roofG);
+  const g=roofGeom(), R=g.R, cp=Math.cos(R.pitch*Math.PI/180);
+  const x0=-g.o,x1=12+g.o,y0=-g.o,y1=10+g.o, ze=FL+g.eave+.15, zr=FL+g.ridge+.15;
+  const TW=.34, TH=.30;
+  const faces=[ // [điểm..], hàm uv
+    {p:[[x0,y0,ze],[x1,y0,ze],[7,5,zr],[5,5,zr]], uv:(x,y)=>[x/TW,(y-y0)/cp/TH]},
+    {p:[[x1,y1,ze],[x0,y1,ze],[5,5,zr],[7,5,zr]], uv:(x,y)=>[-x/TW,(y1-y)/cp/TH]},
+    {p:[[x0,y1,ze],[x0,y0,ze],[5,5,zr]], uv:(x,y)=>[-y/TW,(x-x0)/cp/TH]},
+    {p:[[x1,y0,ze],[x1,y1,ze],[7,5,zr]], uv:(x,y)=>[y/TW,(x1-x)/cp/TH]}
+  ];
+  const pos=[],uv=[];
+  faces.forEach(f=>{
+    const tris=f.p.length===4?[[0,1,2],[0,2,3]]:[[0,1,2]];
+    tris.forEach(t=>t.forEach(i=>{const [x,y,z]=f.p[i]; const v=V(x,y,z); pos.push(v.x,v.y,v.z); uv.push(...f.uv(x,y));}));
+  });
+  const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); geo.computeVertexNormals();
+  const mat=new THREE.MeshStandardMaterial({map:tileTexture(R),roughness:.8,side:THREE.DoubleSide});
+  const roof=new THREE.Mesh(geo,mat); roof.castShadow=true; roof.receiveShadow=true; roof.userData.own=true; roofG.add(roof);
+  const capM=new THREE.MeshStandardMaterial({color:R.ridge,roughness:.7});
+  const cyl=(a,b,r)=>{const len=a.distanceTo(b); const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,len,8),capM); m.position.copy(a).add(b).multiplyScalar(.5); m.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),b.clone().sub(a).normalize()); m.castShadow=true; roofG.add(m);};
+  const r0=V(5,5,zr+.03), r1=V(7,5,zr+.03);
+  if(r0.distanceTo(r1)>.01) cyl(r0,r1,.08);
+  cyl(V(x0,y0,ze+.03),r0,.06); cyl(V(x0,y1,ze+.03),r0,.06); cyl(V(x1,y0,ze+.03),r1,.06); cyl(V(x1,y1,ze+.03),r1,.06);
+  const fm=M.wall, ft=.04;
+  pbox(x0,x1,y0-ft,y0,ze-.18,ze,fm,roofG); pbox(x0,x1,y1,y1+ft,ze-.18,ze,fm,roofG);
+  pbox(x0-ft,x0,y0,y1,ze-.18,ze,fm,roofG); pbox(x1,x1+ft,y0,y1,ze-.18,ze,fm,roofG);
+  // trần hiên (che phần dưới mái nhìn từ dưới lên)
+  pbox(-.11,12.11,-.11,10.11,FL+WALLH-.03,FL+WALLH-.01,M.wall,roofG,false);
+  roofG.visible=viewMode==='ext';
+}
+function labelSprite(name,area,small){
+  const c=document.createElement('canvas'); c.width=512; c.height=176; const g=c.getContext('2d');
+  g.fillStyle='rgba(251,252,250,.92)'; g.strokeStyle='rgba(28,40,48,.85)'; g.lineWidth=4;
+  g.beginPath(); if(g.roundRect) g.roundRect(4,4,504,168,18); else g.rect(4,4,504,168); g.fill(); g.stroke();
+  g.fillStyle='#1c2830'; g.textAlign='center'; g.textBaseline='middle';
+  g.font="600 58px 'Be Vietnam Pro', system-ui, sans-serif"; g.fillText(name,256,66);
+  g.fillStyle='#58676f'; g.font="500 40px 'IBM Plex Mono', ui-monospace, monospace"; g.fillText(area,256,128);
+  const t=new THREE.CanvasTexture(c); const m=new THREE.SpriteMaterial({map:t,depthTest:false,transparent:true});
+  const s=new THREE.Sprite(m); s.userData.own=true; const k=small?1.25:1.9; s.scale.set(k,k*176/512,1); s.renderOrder=10; return s;
+}
+function buildLabels(){
+  clearGroup(labelG);
+  const h=viewMode==='cut'?FL+2.2:FL+WALLH+.7;
+  ROOMS.forEach(r=>{
+    const w=r.r[2]-r.r[0], d=r.r[3]-r.r[1]; const cx=(r.r[0]+r.r[2])/2, cy=(r.r[1]+r.r[3])/2;
+    const s=labelSprite(r.n,vi(w*d,1)+' m²',Math.min(w,d)<2.1); s.position.copy(V(cx,cy,h)); labelG.add(s);
+  });
+  labelG.visible=viewMode!=='ext';
+}
+function site(){
+  const gr=new THREE.Mesh(new THREE.PlaneGeometry(140,140),M.grass); gr.rotation.x=-Math.PI/2; gr.receiveShadow=true; scene.add(gr);
+  const sg=new THREE.Group(); scene.add(sg);
+  pbox(-1.5,13.5,-7.5,-.11,0,.03,M.yard,sg,false);
+  pbox(4.6,7.4,-14,-7.5,0,.02,M.path,sg,false);
+  const areca=(x,y,h)=>{
+    const tr=new THREE.Mesh(new THREE.CylinderGeometry(.08,.12,h,8),M.trunk); tr.position.copy(V(x,y,h/2)); tr.castShadow=true; sg.add(tr);
+    for(let i=0;i<8;i++){const lf=new THREE.Mesh(new THREE.BoxGeometry(.22,.03,1.7),i%2?M.leaf:M.leaf2); const a=i*Math.PI/4;
+      lf.position.copy(V(x,y,h)); lf.rotation.order='YXZ'; lf.rotation.y=a; lf.rotation.x=.45; lf.translateZ(.75); lf.castShadow=true; sg.add(lf);}
+  };
+  const tree=(x,y,r)=>{
+    const tr=new THREE.Mesh(new THREE.CylinderGeometry(.14,.2,2.4,8),M.trunk); tr.position.copy(V(x,y,1.2)); tr.castShadow=true; sg.add(tr);
+    const cr=new THREE.Mesh(new THREE.IcosahedronGeometry(r,1),M.leaf); cr.position.copy(V(x,y,2.4+r*.7)); cr.castShadow=true; sg.add(cr);
+  };
+  areca(15.4,-2.6,6.2); areca(-3.2,11.5,5.6); areca(14.8,12.5,5.2);
+  tree(-4.2,5.5,1.9); tree(16,8.5,2.2); tree(6,15.5,2.5);
+}
+const CAMS={q:[[-15,9.5,17],[0,1.8,0]],front:[[0,3,21],[0,2.2,0]],back:[[-13,8,-16],[0,1.8,0]],top:[[0,25,.6],[0,0,0]]};
+function setCam(k){const c=CAMS[k]; camera.position.set(...c[0]); controls.target.set(...c[1]); controls.update();}
+function sceneBg(){ if(!scene) return; const c=getComputedStyle(document.documentElement).getPropertyValue('--scene').trim()||'#dde5ea'; scene.background=new THREE.Color(c); scene.fog=new THREE.Fog(c,50,120); }
+function init3D(){
+  box3d=document.getElementById('viewer');
+  if(!window.THREE||!THREE.OrbitControls){ box3d.innerHTML='<p class="err">Không tải được thư viện 3D. Hãy tải lại trang.</p>'; return; }
+  try{ renderer=new THREE.WebGLRenderer({antialias:true}); }catch(e){ box3d.innerHTML='<p class="err">Trình duyệt này không hỗ trợ WebGL nên không hiển thị được mô hình 3D. Bản vẽ 2D bên dưới vẫn đầy đủ.</p>'; return; }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2)); renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  box3d.appendChild(renderer.domElement);
+  scene=new THREE.Scene(); sceneBg();
+  camera=new THREE.PerspectiveCamera(40,1,.1,300);
+  controls=new THREE.OrbitControls(camera,renderer.domElement); controls.enableDamping=true; controls.maxPolarAngle=Math.PI/2-.03; controls.minDistance=3; controls.maxDistance=60;
+  hemi=new THREE.HemisphereLight(0xffffff,0x8a7c62,.62); scene.add(hemi);
+  sun=new THREE.DirectionalLight(0xfff4e2,.95); sun.position.set(-12,20,14); sun.castShadow=true; sun.shadow.mapSize.set(2048,2048);
+  Object.assign(sun.shadow.camera,{left:-17,right:17,top:17,bottom:-17,near:1,far:70}); sun.shadow.bias=-.0006; scene.add(sun);
+  scene.add(new THREE.AmbientLight(0xffffff,.12));
+  mats(); site();
+  houseG=new THREE.Group(); roofG=new THREE.Group(); labelG=new THREE.Group(); scene.add(houseG,roofG,labelG);
+  buildHouse(); buildRoof(); buildLabels();
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(buildLabels);
+  const resize=()=>{const w=box3d.clientWidth; const h=Math.round(Math.max(320,Math.min(620,w*.6))); box3d.style.height=h+'px'; renderer.setSize(w,h); camera.aspect=w/h; camera.updateProjectionMatrix();};
+  resize(); if(window.ResizeObserver) new ResizeObserver(resize).observe(box3d); else window.addEventListener('resize',resize);
+  setCam('q');
+  (function loop(){ requestAnimationFrame(loop); controls.update(); renderer.render(scene,camera); })();
+}
+
+/* ---------- Điều khiển ---------- */
+function setRoof(k){
+  roofKey=k;
+  document.querySelectorAll('[data-roof]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.roof===k)));
+  drawElevations(); drawCost(); if(roofG) buildRoof();
+}
+function setView(v){
+  viewMode=v;
+  document.querySelectorAll('[data-vm]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.vm===v)));
+  if(houseG){ buildHouse(); roofG.visible=v==='ext'; buildLabels(); }
+}
+document.querySelectorAll('[data-roof]').forEach(b=>b.addEventListener('click',()=>setRoof(b.dataset.roof)));
+document.querySelectorAll('[data-vm]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.vm)));
+document.querySelectorAll('[data-cam]').forEach(b=>b.addEventListener('click',()=>{ if(camera) setCam(b.dataset.cam); }));
+new MutationObserver(sceneBg).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+if(window.matchMedia){ const mq=matchMedia('(prefers-color-scheme: dark)'); if(mq.addEventListener) mq.addEventListener('change',sceneBg); }
+
+drawPlan(); drawLegendAndTable(); drawElevations(); drawCost();
+init3D();
+})();
+</script>
+</body></html>
