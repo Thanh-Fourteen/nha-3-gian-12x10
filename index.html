@@ -12,7 +12,8 @@
   --z-live:#e5ecdf; --z-sleep:#e1e8f1; --z-tho:#f2e1dc; --z-svc:#eeeadb; --z-wet:#dbebed; --z-out:#eaecea;
   --el-wall:#f2efe8; --el-recess:#d6d4cc; --el-plinth:#a7a399; --el-glass:#b7cfdb; --el-door:#8a5a37;
   --el-roof-nhat:#596068; --el-roof-thai:#a9533a; --el-shade:rgba(20,30,35,.13); --el-ground:#c9cfc6;
-  --scene:#dde5ea; --xf:#4b4f54; --xf-pano:#8b9095;
+  --scene:#dde5ea; --xf:#5a3a22; --xf-pano:#8a5a37;
+  --brick:#b0563a; --mortar:#e2d5be; --cream:#e8d49c; --col:#3a281c; --fascia-d:#4a3324; --el-roof-trad:#b4553a;
   --f-body:'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --f-mono:'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 }
@@ -23,7 +24,8 @@
   --z-live:#1d281c; --z-sleep:#1a2431; --z-tho:#2d1f1d; --z-svc:#27251b; --z-wet:#142729; --z-out:#1c2226;
   --el-wall:#2b3137; --el-recess:#1f2429; --el-plinth:#4b4e51; --el-glass:#3b5566; --el-door:#7a5032;
   --el-roof-nhat:#454c54; --el-roof-thai:#8a412c; --el-shade:rgba(0,0,0,.35); --el-ground:#2a302c;
-  --scene:#1a2228; --xf:#a3aab0; --xf-pano:#5a6066; color-scheme:dark; } }
+  --scene:#1a2228; --xf:#c09a74; --xf-pano:#6e4a30;
+  --brick:#8a4330; --mortar:#5a4a3c; --cream:#a8955f; --col:#6b4a35; --fascia-d:#6b4a35; --el-roof-trad:#8f3f2a; color-scheme:dark; } }
 :root[data-theme="dark"]{
   --paper:#11161a; --sheet:#161c21; --ink:#e1e7e9; --muted:#93a2a9; --rule:#2b363c;
   --accent:#86b4df; --accent-soft:#1d2b38; --moss:#9dbb78;
@@ -31,7 +33,8 @@
   --z-live:#1d281c; --z-sleep:#1a2431; --z-tho:#2d1f1d; --z-svc:#27251b; --z-wet:#142729; --z-out:#1c2226;
   --el-wall:#2b3137; --el-recess:#1f2429; --el-plinth:#4b4e51; --el-glass:#3b5566; --el-door:#7a5032;
   --el-roof-nhat:#454c54; --el-roof-thai:#8a412c; --el-shade:rgba(0,0,0,.35); --el-ground:#2a302c;
-  --scene:#1a2228; --xf:#a3aab0; --xf-pano:#5a6066; color-scheme:dark; }
+  --scene:#1a2228; --xf:#c09a74; --xf-pano:#6e4a30;
+  --brick:#8a4330; --mortar:#5a4a3c; --cream:#a8955f; --col:#6b4a35; --fascia-d:#6b4a35; --el-roof-trad:#8f3f2a; color-scheme:dark; }
 
 body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6}
 .wrap{max-width:1180px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:28px 64px;display:grid;gap:44px}
@@ -136,6 +139,13 @@ figcaption b{color:var(--ink)}
 .e-xf{stroke:var(--xf);stroke-width:.05}
 .e-xfo{fill:none;stroke:var(--xf);stroke-width:.07}
 .e-pano{fill:var(--xf-pano);stroke:var(--xf);stroke-width:.05}
+.e-cream{fill:var(--cream);stroke:var(--ink);stroke-width:.016}
+.e-col{fill:var(--col);stroke:var(--ink);stroke-width:.016}
+.e-ridge{fill:var(--el-roof-trad);stroke:var(--ink);stroke-width:.02}
+.e-fasciad{fill:var(--fascia-d);stroke:var(--ink);stroke-width:.016}
+.e-coping{fill:none;stroke:var(--cream);stroke-width:.12;stroke-linejoin:round}
+.e-stepr{fill:var(--brick);stroke:var(--ink);stroke-width:.016}
+.e-roofedge{stroke:var(--el-roof-trad);stroke-width:.1}
 .e-door{fill:var(--el-door);stroke:var(--ink);stroke-width:.03}
 .e-thin{stroke:var(--ink);stroke-width:.016}
 .e-step{fill:var(--el-wall);stroke:var(--ink);stroke-width:.016}
@@ -181,7 +191,7 @@ figcaption b{color:var(--ink)}
   <div class="tb-main">
     <div class="eyebrow">Phương án kiến trúc · Nhà ở nông thôn 1 tầng</div>
     <h1>Nhà 3 gian 12 × 10 m</h1>
-    <p>Gian giữa là phòng khách có hiên thụt vào 1,5 m. Gian phải: phòng thờ 3,9 × 2,5 m, phòng ngủ 3. Bếp và phòng ăn chung một không gian ở phía sau gian giữa và gian phải. Gian trái: phòng ngủ 1, phòng ngủ 2, khu vệ sinh và hiên sau có WC riêng. Toàn bộ cửa nhôm Xingfa. Kích thước ghi theo tim tường, đơn vị mm.</p>
+    <p>Gian giữa là phòng khách có hiên thụt vào 1,5 m. Gian phải: phòng thờ 3,9 × 2,5 m, phòng ngủ 3. Bếp và phòng ăn chung một không gian ở phía sau gian giữa và gian phải. Gian trái: phòng ngủ 1, phòng ngủ 2, khu vệ sinh và hiên sau có WC riêng. Ngoại thất theo kiểu nhà 3 gian Bắc Bộ: mái ngói ta hai dốc, tường hồi bít đốc, trụ biểu bốn góc, tường gạch trần viền chỉ vữa kem. Toàn bộ cửa nhôm Xingfa vân gỗ. Kích thước ghi theo tim tường, đơn vị mm.</p>
   </div>
   <div class="tb-grid">
     <div class="tb-cell"><span>Diện tích xây dựng</span><b>120 m²</b></div>
@@ -192,8 +202,9 @@ figcaption b{color:var(--ink)}
     <div class="tb-cell"><span>Dự toán phương án</span><b id="tbCost">—</b></div>
     <div class="tb-cell tb-roof"><span>Kiểu mái (áp dụng cho 3D, mặt đứng, dự toán)</span>
       <div class="seg" role="group" aria-label="Kiểu mái">
-        <button type="button" id="roofNhat" data-roof="nhat" aria-pressed="true">Mái Nhật 30°</button>
-        <button type="button" id="roofThai" data-roof="thai" aria-pressed="false">Mái Thái 40°</button>
+        <button type="button" id="roofTrad" data-roof="trad" aria-pressed="true">Ngói ta truyền thống</button>
+        <button type="button" id="roofNhat" data-roof="nhat" aria-pressed="false">Mái Nhật</button>
+        <button type="button" id="roofThai" data-roof="thai" aria-pressed="false">Mái Thái</button>
       </div>
     </div>
   </div>
@@ -235,7 +246,7 @@ figcaption b{color:var(--ink)}
 <section aria-labelledby="helev" class="elev">
   <div class="sec-head"><h2 id="helev">Mặt đứng</h2><span class="eyebrow">Cao độ tính từ mặt nền hoàn thiện ±0.000</span></div>
   <div class="elev-grid">
-    <figure class="sheet"><div class="scroll-x"><svg id="elevFront" role="img" aria-label="Mặt đứng chính"></svg></div><figcaption><b>Mặt đứng chính (trục 1 – 4).</b> Gian giữa thụt vào làm hiên. Cửa chính nhôm Xingfa 4 cánh mở quay cao 2,8 m: pano nhôm dưới, kính cường lực giữa, ô kính fix trên. 3 bậc tam cấp.</figcaption></figure>
+    <figure class="sheet"><div class="scroll-x"><svg id="elevFront" role="img" aria-label="Mặt đứng chính"></svg></div><figcaption><b>Mặt đứng chính (trục 1 – 4).</b> Gian giữa thụt vào làm hiên, ở phương án ngói ta có 2 cột tròn đỡ dầm hiên. Cửa chính nhôm Xingfa vân gỗ 4 cánh mở quay cao 2,8 m: pano dưới, kính cường lực giữa, ô kính fix trên. 3 bậc tam cấp.</figcaption></figure>
     <figure class="sheet"><div class="scroll-x"><svg id="elevSide" role="img" aria-label="Mặt đứng bên phải"></svg></div><figcaption><b>Mặt đứng bên phải.</b> Từ trái sang: cửa sổ phòng thờ, phòng ngủ 3, cửa phụ khu bếp và cửa sổ bếp. Bên trái hình là phía trước nhà.</figcaption></figure>
   </div>
 </section>
@@ -273,7 +284,8 @@ figcaption b{color:var(--ink)}
     <article><h3>Phòng thờ gọn 3,9 × 2,5 m</h3><p>Phòng thờ rộng 9,75 m², vào từ phòng khách qua cửa 0,8 m. Bàn thờ dài 1,7 m tựa vào tường đặc, phía trước còn chỗ bàn lễ và lối lạy. Không chung tường với WC hay bếp. Phần diện tích bớt ra được chuyển cho phòng ngủ 3 và khu bếp ăn.</p></article>
     <article><h3>Bếp và phòng ăn chung một không gian</h3><p>Khu bếp + ăn rộng 8,1 × 4,0 m (32,4 m²), trải ngang phía sau gian giữa và gian phải, không có tường ngăn. Trên trục 3 chỉ có dầm đỡ mái. Tủ bếp chữ L sát hồi phải, chậu rửa dưới cửa sổ sau, bàn ăn 6 ghế ở giữa. Có cửa phụ ra sân bên.</p></article>
     <article><h3>Hai WC chung một hộp kỹ thuật</h3><p>WC 1 (trong nhà, mở ra khu bếp ăn) và WC 2 (mở ra hiên sau) đặt sát nhau, chung tường 110. Đường cấp thoát nước gom về một chỗ, dùng chung một bể phốt, tiết kiệm ống và công.</p></article>
-    <article><h3>Toàn bộ cửa nhôm Xingfa</h3><p>Nhôm hệ 55 màu ghi xám, kính cường lực 8 mm. Cửa chính 4 cánh mở quay. Cửa sổ 2 cánh mở quay có ô kính fix phía trên. Cửa phòng dùng pano nhôm, cửa WC dùng kính mờ. Không cong vênh, không mối mọt, kín nước, ít phải bảo trì.</p></article>
+    <article><h3>Ngoại thất kiểu nhà 3 gian Bắc Bộ</h3><p>Tham khảo dự án Điền Viên Thôn (Ba Vì). Mái ngói ta hai dốc 30°, bờ nóc đắp có đầu kìm. Hai đầu hồi xây tường bít đốc cao hơn mái. Bốn góc nhà có trụ biểu mũ lồng đèn. Tường ngoài ốp gạch thẻ đỏ để trần, viền chỉ vữa màu kem quanh cửa, chân tường và đỉnh tường. Hiên giữa có 2 cột tròn màu gỗ sẫm. Sân lát gạch lá nem.</p></article>
+    <article><h3>Toàn bộ cửa nhôm Xingfa vân gỗ</h3><p>Nhôm hệ 55 sơn tĩnh điện vân gỗ nâu cho hợp với tường gạch và mái ngói, kính cường lực 8 mm. Cửa chính 4 cánh mở quay. Cửa sổ 2 cánh mở quay có ô kính fix phía trên. Cửa phòng dùng pano, cửa WC dùng kính mờ. Muốn giống hẳn nhà trong video thì đổi cửa chính sang cửa gỗ bức bàn. Kiểu cửa này đắt hơn và phải bảo dưỡng gỗ, nên hỏi giá xưởng mộc địa phương.</p></article>
     <article><h3>Mỗi phòng ngủ có cửa sổ ngoài</h3><p>Ngủ 1 lấy sáng mặt tiền, ngủ 2 và ngủ 3 lấy sáng hai hồi nhà. Cả 3 phòng đều mở cửa ra phòng khách. Diện tích 12,9 – 13,7 m², đủ đặt giường 1,6 m và tủ áo 1,8 m.</p></article>
     <article><h3>Kết cấu đơn giản, dễ thi công</h3><p>Móng băng BTCT, cột 220×220 tại các trục, nền tôn cao 0,45 m chống ngập. Mái kèo thép mạ kẽm lợp ngói, trần thạch cao chống nóng. Thợ ở quê làm quen kiểu nhà này.</p></article>
     <article><h3>Cần chỉnh theo hướng đất</h3><p>Chưa có hướng nhà. Nếu hướng đẹp nằm bên trái, chỉ cần lật đối xứng: phòng thờ và bếp sang trái, các phòng ngủ sang phải. Hướng bàn thờ và bếp nên chọn theo tuổi gia chủ.</p></article>
@@ -289,7 +301,7 @@ figcaption b{color:var(--ink)}
     <a href="anh/01-phoi-canh-goc-cheo.png"><img src="anh/01-phoi-canh-goc-cheo.png" alt="Phối cảnh góc chéo" loading="lazy"><span>Phối cảnh góc chéo</span></a>
     <a href="anh/02-phoi-canh-chinh-dien.png"><img src="anh/02-phoi-canh-chinh-dien.png" alt="Phối cảnh chính diện" loading="lazy"><span>Chính diện</span></a>
     <a href="anh/03-phoi-canh-phia-sau.png"><img src="anh/03-phoi-canh-phia-sau.png" alt="Phối cảnh phía sau" loading="lazy"><span>Phía sau</span></a>
-    <a href="anh/04-phoi-canh-mai-thai.png"><img src="anh/04-phoi-canh-mai-thai.png" alt="Phương án mái Thái" loading="lazy"><span>Phương án mái Thái</span></a>
+    <a href="anh/04-phuong-an-mai-nhat.png"><img src="anh/04-phuong-an-mai-nhat.png" alt="Phương án mái Nhật để so sánh" loading="lazy"><span>So sánh: phương án mái Nhật</span></a>
     <a href="anh/05-noi-that-tu-tren.png"><img src="anh/05-noi-that-tu-tren.png" alt="Nội thất nhìn từ trên" loading="lazy"><span>Nội thất từ trên xuống</span></a>
     <a href="anh/06-noi-that-goc-cheo.png"><img src="anh/06-noi-that-goc-cheo.png" alt="Nội thất góc chéo" loading="lazy"><span>Nội thất góc chéo</span></a>
     <a href="anh/07-mat-bang.png"><img src="anh/07-mat-bang.png" alt="Mặt bằng tầng 1" loading="lazy"><span>Mặt bằng tầng 1</span></a>
@@ -301,6 +313,8 @@ figcaption b{color:var(--ink)}
 <section aria-labelledby="hrefs">
   <div class="sec-head"><h2 id="hrefs">Nguồn tham khảo</h2><span class="eyebrow">Mẫu nhà và ảnh thực tế · đơn giá</span></div>
   <ul class="refs">
+    <li><div><a href="https://www.youtube.com/watch?v=O_WUd6rjlQM" target="_blank" rel="noopener">Dự án Điền Viên Thôn Ba Vì (video)</a><br><span>Mẫu phong cách đang áp dụng: mái ngói đỏ, tường hồi bít đốc, trụ biểu, gạch trần, cột tròn, sân gạch đỏ.</span></div><em>YouTube</em></li>
+    <li><div><a href="https://vnexpress.net/nha-ba-gian-co-mai-cao-6-m-4627261.html" target="_blank" rel="noopener">Nhà ba gian có mái cao 6 m</a><br><span>Nhà 3 gian mái ngói dốc cao, tham khảo tỷ lệ mái và cách lấy sáng.</span></div><em>VnExpress</em></li>
     <li><div><a href="https://vietnamnet.vn/mau-nha-cap-4-120m2-3-phong-ngu-1-phong-tho-2012301.html" target="_blank" rel="noopener">Mẫu nhà cấp 4 120m² 3 phòng ngủ 1 phòng thờ</a><br><span>Đúng quy mô 120 m², có lưu ý không đặt phòng thờ sát WC, bếp.</span></div><em>Vietnamnet</em></li>
     <li><div><a href="https://muaban.net/blog/120m2-cap-4-mai-thai-3-phong-ngu-580071/" target="_blank" rel="noopener">10+ mẫu nhà cấp 4 mái Thái 3 phòng ngủ 120m²</a><br><span>Ảnh phối cảnh mái Thái, có biến thể chữ U và có phòng thờ.</span></div><em>Muaban.net</em></li>
     <li><div><a href="https://www.vtcnews.vn/top-nhung-mau-nha-cap-4-co-3-phong-ngu-500-trieu-pho-bien-nhat-hien-nay-ar769833.html" target="_blank" rel="noopener">Những mẫu nhà cấp 4 có 3 phòng ngủ</a><br><span>Có mẫu nhà 3 gian truyền thống, mái giật cấp, nhiều cửa sổ.</span></div><em>VTC News</em></li>
@@ -330,30 +344,38 @@ figcaption b{color:var(--ink)}
 /* ---------- Số liệu chung (m), x: trái → phải nhìn từ ngoài vào; y: trước → sau ---------- */
 const FL=0.45, WALLH=3.6, DOOR_H=2.4, MAIN_H=2.8, OPEN_H=2.6, WIN_SILL=0.9, WIN_TOP=2.3, BEAM_BOT=3.2;
 const ROOFS={
-  nhat:{key:'nhat',name:'Mái Nhật',pitch:30,over:.8,tileA:'#5f666e',tileB:'#40454b',ridge:0x3a3e43,cost:130,area:182},
-  thai:{key:'thai',name:'Mái Thái',pitch:40,over:.9,tileA:'#b65a3c',tileB:'#843a25',ridge:0x6e2f1e,cost:175,area:212}
+  trad:{key:'trad',name:'Mái ngói ta',type:'gable',pitch:30,over:.5,tileA:'#b9583b',tileB:'#7a321f',ridge:0x8f3c25,cost:150,area:165},
+  nhat:{key:'nhat',name:'Mái Nhật',type:'hip',pitch:30,over:.8,tileA:'#5f666e',tileB:'#40454b',ridge:0x3a3e43,cost:130,area:182},
+  thai:{key:'thai',name:'Mái Thái',type:'hip',pitch:40,over:.9,tileA:'#b65a3c',tileB:'#843a25',ridge:0x6e2f1e,cost:175,area:212}
 };
-let roofKey='nhat', viewMode='ext';
+const LIFT=.15; // mái nằm trên đỉnh tường một lớp xà gồ
+let roofKey='trad', viewMode='ext';
+const isTrad=()=>ROOFS[roofKey].type==='gable';
+// Phong cách truyền thống: trụ biểu 4 góc, trụ áp mặt tiền, 2 cột tròn hiên trước
+const TRU=[[0,0],[12,0],[0,10],[12,10]], PIL=[[3.9,0],[8.1,0],[3.9,10]], RCOL=[[4.5,.22],[7.5,.22]];
 
 const WALLS=[
-  {a:[0,0],b:[3.9,0],t:.22,ops:[{k:'win',s:1.2,e:2.6}]},
+  {a:[0,0],b:[3.9,0],t:.22,out:'-y',ops:[{k:'win',s:1.2,e:2.6}]},
   {a:[3.9,0],b:[8.1,0],t:.22,h:0,beam:true},
-  {a:[8.1,0],b:[12,0],t:.22,ops:[{k:'win',s:9.4,e:10.8}]},
-  {a:[3.9,1.5],b:[8.1,1.5],t:.22,ops:[{k:'main',s:4.9,e:7.1,side:1}]},
-  {a:[0,0],b:[0,6.8],t:.22,ops:[{k:'win',s:4.4,e:5.6}]},
-  {a:[0,6.8],b:[0,8.4],t:.22,ops:[{k:'win',s:7.3,e:7.9,sill:1.6}]},
-  {a:[0,8.4],b:[0,10],t:.22,h:1.0,beam:true},
-  {a:[0,10],b:[2.2,10],t:.22,h:1.0,beam:true},
+  {a:[8.1,0],b:[12,0],t:.22,out:'-y',ops:[{k:'win',s:9.4,e:10.8}]},
+  {a:[3.9,1.5],b:[8.1,1.5],t:.22,out:'-y',ops:[{k:'main',s:4.9,e:7.1,side:1}]},
+  {a:[0,0],b:[0,6.8],t:.22,out:'-x',ops:[{k:'win',s:4.4,e:5.6}]},
+  {a:[0,6.8],b:[0,8.4],t:.22,out:'-x',ops:[{k:'win',s:7.3,e:7.9,sill:1.6}]},
+  {a:[0,8.4],b:[0,10],t:.22,h:1.0,beam:true,out:'-x'},
+  {a:[0,10],b:[2.2,10],t:.22,h:1.0,beam:true,out:'+y'},
   {a:[2.2,10],b:[3.9,10],t:.22,h:0,beam:true},
-  {a:[3.9,10],b:[12,10],t:.22,ops:[{k:'win',s:5.2,e:6.6},{k:'win',s:9.7,e:11.0,sill:1.1}]},
-  {a:[12,0],b:[12,10],t:.22,ops:[{k:'win',s:.6,e:1.8},{k:'win',s:3.4,e:4.6},{k:'door',s:6.2,e:7.0,hinge:'e',side:-1,ext:true},{k:'win',s:7.4,e:8.4,sill:1.1}]},
-  {a:[3.9,0],b:[3.9,10],t:.22,ops:[{k:'door',s:2.5,e:3.3,hinge:'e',side:-1},{k:'door',s:4.9,e:5.7,hinge:'e',side:-1},{k:'door',s:7.0,e:7.7,hinge:'s',side:-1},{k:'door',s:8.8,e:9.6,hinge:'e',side:1,ext:true}]},
-  {a:[8.1,0],b:[8.1,6.0],t:.22,ops:[{k:'door',s:1.6,e:2.4,hinge:'e',side:1},{k:'door',s:4.9,e:5.7,hinge:'e',side:1}]},
+  {a:[3.9,10],b:[12,10],t:.22,out:'+y',ops:[{k:'win',s:5.2,e:6.6},{k:'win',s:9.7,e:11.0,sill:1.1}]},
+  {a:[12,0],b:[12,10],t:.22,out:'+x',ops:[{k:'win',s:.6,e:1.8},{k:'win',s:3.4,e:4.6},{k:'door',s:6.2,e:7.0,hinge:'e',side:-1,ext:true},{k:'win',s:7.4,e:8.4,sill:1.1}]},
+  {a:[3.9,0],b:[3.9,1.5],t:.22,out:'+x'},
+  {a:[3.9,1.5],b:[3.9,8.4],t:.22,ops:[{k:'door',s:2.5,e:3.3,hinge:'e',side:-1},{k:'door',s:4.9,e:5.7,hinge:'e',side:-1},{k:'door',s:7.0,e:7.7,hinge:'s',side:-1}]},
+  {a:[3.9,8.4],b:[3.9,10],t:.22,out:'-x',ops:[{k:'door',s:8.8,e:9.6,hinge:'e',side:1,ext:true}]},
+  {a:[8.1,0],b:[8.1,1.5],t:.22,out:'-x'},
+  {a:[8.1,1.5],b:[8.1,6.0],t:.22,ops:[{k:'door',s:1.6,e:2.4,hinge:'e',side:1},{k:'door',s:4.9,e:5.7,hinge:'e',side:1}]},
   {a:[8.1,6.0],b:[8.1,10],t:.22,h:0,beam:true},
   {a:[0,3.5],b:[3.9,3.5],t:.11},
   {a:[0,6.8],b:[3.9,6.8],t:.11},
   {a:[2.0,6.8],b:[2.0,8.4],t:.11},
-  {a:[0,8.4],b:[3.9,8.4],t:.22,ops:[{k:'door',s:0.9,e:1.6,hinge:'e',side:-1},{k:'win',s:2.6,e:3.2,sill:1.6}]},
+  {a:[0,8.4],b:[3.9,8.4],t:.22,out:'+y',ops:[{k:'door',s:0.9,e:1.6,hinge:'e',side:-1},{k:'win',s:2.6,e:3.2,sill:1.6}]},
   {a:[3.9,6.0],b:[8.1,6.0],t:.11,ops:[{k:'open',s:5.0,e:7.0}]},
   {a:[8.1,2.5],b:[12,2.5],t:.11},
   {a:[8.1,6.0],b:[12,6.0],t:.11}
@@ -469,6 +491,11 @@ function drawPlan(){
     });
   });
   COLS.forEach(c=>{s+=rect(c[0]-.13,c[1]-.13,c[0]+.13,c[1]+.13,'col');});
+  if(isTrad()){
+    TRU.forEach(c=>{s+=rect(c[0]-.23,c[1]-.23,c[0]+.23,c[1]+.23,'col');});
+    PIL.forEach(c=>{s+=rect(c[0]-.17,c[1]-.17,c[0]+.17,c[1]+.17,'col');});
+    RCOL.forEach(c=>{s+=circ(c[0],c[1],.2,'step')+circ(c[0],c[1],.13,'col');});
+  }
   ROOMS.forEach(r=>{
     const a=(r.r[2]-r.r[0])*(r.r[3]-r.r[1]); const [lx,ly]=r.lp||[(r.r[0]+r.r[2])/2,(r.r[1]+r.r[3])/2];
     s+=`<text class="rl" x="${lx}" y="${r3(sy(ly))}">${r.n}</text><text class="ra" x="${lx}" y="${r3(sy(ly)+.28)}">${va(a)} m²</text>`;
@@ -495,7 +522,7 @@ function drawLegendAndTable(){
 /* ---------- 2D: mặt đứng ---------- */
 const er=(x1,z1,x2,z2,cls,st='')=>`<rect class="${cls}" x="${r3(x1)}" y="${r3(-z2)}" width="${r3(x2-x1)}" height="${r3(z2-z1)}"${st?` style="${st}"`:''}/>`;
 const el=(x1,z1,x2,z2,cls)=>`<line class="${cls}" x1="${r3(x1)}" y1="${r3(-z1)}" x2="${r3(x2)}" y2="${r3(-z2)}"/>`;
-function roofGeom(){const R=ROOFS[roofKey], tp=Math.tan(R.pitch*Math.PI/180), o=R.over; return {R,tp,o,eave:WALLH-o*tp,ridge:WALLH+5*tp};}
+function roofGeom(){const R=ROOFS[roofKey], tp=Math.tan(R.pitch*Math.PI/180), o=R.over; return {R,tp,o,eave:WALLH-o*tp+LIFT,ridge:WALLH+5*tp+LIFT};}
 function lvl(x,z,txt){return `<path class="e-lvl" d="M${r3(x)} ${r3(-z)} l-.14 -.2 h.28 z"/>${el(x-.5,z,x+1.6,z,'e-thin')}<text class="e-lt" x="${r3(x+.22)}" y="${r3(-z-.08)}">${txt}</text>`;}
 const fz=z=>(z>=0?(z===0?'±':'+'):'−')+Math.abs(z).toFixed(3);
 // Cửa sổ Xingfa: 2 cánh mở quay + ô kính fix phía trên
@@ -522,8 +549,54 @@ function elevDims(xs,z){
   for(let i=0;i<xs.length-1;i++) s+=`<text class="dt" x="${r3((xs[i]+xs[i+1])/2)}" y="${r3(-z-.08)}">${Math.round((xs[i+1]-xs[i])*1000)}</text>`;
   return s;
 }
+/* Phương án ngói ta: tường gạch trần, gờ chỉ vữa màu kem, tường hồi bít đốc, trụ biểu */
+const bpat=id=>`<defs><pattern id="${id}" width=".46" height=".14" patternUnits="userSpaceOnUse"><rect width=".46" height=".14" style="fill:var(--brick)"/><path d="M0 0H.46M0 .07H.46M.23 0V.07M0 .07V.14" style="stroke:var(--mortar);stroke-width:.014;fill:none"/></pattern></defs>`;
+function truE(c,top){
+  return er(c-.23,-.45,c+.23,top,'e-cream')+el(c-.23,top-.35,c+.23,top-.35,'e-thin')+er(c-.3,top,c+.3,top+.1,'e-cream')+er(c-.17,top+.1,c+.17,top+.45,'e-cream')+er(c-.25,top+.45,c+.25,top+.53,'e-cream')
+    +`<polygon class="e-cream" points="${r3(c-.2)},${r3(-(top+.53))} ${r3(c+.2)},${r3(-(top+.53))} ${r3(c)},${r3(-(top+.9))}"/>`;
+}
+const winTrad=(x1,x2,z1,z2)=>er(x1-.1,z1-.1,x2+.1,z2+.1,'e-cream')+winE(x1,x2,z1,z2);
+function drawElevTrad(g){
+  const top=g.eave+.8, rz=g.ridge, gz=y=>g.eave+(y+g.o)*g.tp;
+  let s=bpat('bF')+er(-2.3,-.75,14.3,-.45,'e-ground')+el(-2.3,-.45,14.3,-.45,'e-gline');
+  s+=er(0,-.45,12,0,'e-wall','fill:url(#bF)');
+  s+=er(4.4,-.45,7.6,-.3,'e-stepr')+er(4.4,-.3,7.6,-.15,'e-stepr')+er(4.4,-.15,7.6,0,'e-stepr');
+  s+=er(3.9,0,8.1,BEAM_BOT,'e-recess')+xfDoorE(4.9,7.1,MAIN_H,4,true);
+  s+=er(3.9,BEAM_BOT,8.1,WALLH,'e-cream');
+  s+=er(0,0,3.9,WALLH,'e-wall','fill:url(#bF)')+er(8.1,0,12,WALLH,'e-wall','fill:url(#bF)');
+  [[0,3.9],[8.1,12]].forEach(([a,b])=>{s+=er(a,WALLH-.32,b,WALLH,'e-cream')+er(a,0,b,.14,'e-cream');});
+  s+=winTrad(1.2,2.6,WIN_SILL,WIN_TOP)+winTrad(9.4,10.8,WIN_SILL,WIN_TOP);
+  PIL.filter(p=>p[1]===0).forEach(p=>{s+=er(p[0]-.17,0,p[0]+.17,WALLH,'e-cream');});
+  RCOL.forEach(([x])=>{s+=er(x-.2,0,x+.2,.15,'e-cream')+er(x-.13,.15,x+.13,BEAM_BOT-.12,'e-col')+er(x-.18,BEAM_BOT-.12,x+.18,BEAM_BOT,'e-cream');});
+  s+=er(.15,g.eave-.4,11.85,g.eave,'e-shade');
+  s+=er(.15,g.eave,11.85,rz,'e-roof','fill:var(--el-roof-trad)');
+  for(let z=g.eave+.25;z<rz-.05;z+=.25) s+=el(.15,z,11.85,z,'e-tile');
+  s+=er(.15,g.eave-.18,11.85,g.eave,'e-fasciad');
+  s+=er(.15,rz,11.85,rz+.28,'e-ridge')+er(.15,rz+.09,11.85,rz+.15,'e-cream');
+  [[.15,1],[11.85,-1]].forEach(([x,d])=>{s+=er(Math.min(x,x+d*.5),rz+.28,Math.max(x,x+d*.5),rz+.5,'e-ridge')+er(Math.min(x,x+d*.25),rz+.5,Math.max(x,x+d*.25),rz+.72,'e-ridge');});
+  [0,12].forEach(x=>{s+=er(x-.15,WALLH-.3,x+.15,rz+.35,'e-wall','fill:url(#bF)')+er(x-.15,rz+.25,x+.15,rz+.35,'e-cream')+truE(x,top);});
+  s+=lvl(12.9,rz+.28,fz(+(rz+.28).toFixed(3)))+lvl(12.9,g.eave,fz(+g.eave.toFixed(3)))+lvl(12.9,0,'±0.000')+lvl(12.9,-.45,'−0.450');
+  s+=elevDims([0,3.9,8.1,12],-1.2);
+  let svg=document.getElementById('elevFront'); svg.setAttribute('viewBox',`-2.3 ${r3(-rz-1.2)} 17.4 ${r3(rz+1.2+1.65)}`); svg.innerHTML=s;
+  // mặt bên phải: trục ngang = y, phía trước ở bên trái
+  const e=.23, gt=gz(-e)+.35;
+  s=bpat('bS')+er(-2.3,-.75,12.3,-.45,'e-ground')+el(-2.3,-.45,12.3,-.45,'e-gline');
+  s+=er(0,-.45,10,0,'e-wall','fill:url(#bS)')+er(0,0,10,WALLH,'e-wall','fill:url(#bS)')+er(0,0,10,.14,'e-cream');
+  s+=el(-g.o,g.eave,-e,gz(-e),'e-roofedge')+el(10+g.o,g.eave,10+e,gz(-e),'e-roofedge');
+  s+=`<polygon class="e-wall" style="fill:url(#bS)" points="${-e},${r3(-(WALLH-.3))} ${-e},${r3(-gt)} 5,${r3(-(rz+.35))} ${10+e},${r3(-gt)} ${10+e},${r3(-(WALLH-.3))}"/>`;
+  s+=`<polyline class="e-coping" points="${-e},${r3(-gt)} 5,${r3(-(rz+.35))} ${10+e},${r3(-gt)}"/>`;
+  wallInfo(WALLS.find(w=>w.a[0]===12&&w.b[0]===12)).ops.forEach(o=>{
+    if(o.k==='win') s+=winTrad(o.s,o.e,o.sill||WIN_SILL,WIN_TOP);
+    else if(o.k==='door') s+=er(o.s-.1,0,o.e+.1,DOOR_H+.1,'e-cream')+xfDoorE(o.s,o.e,DOOR_H,1,false)+er(o.s-.1,-.15,o.e+.1,0,'e-stepr');
+  });
+  [0,10].forEach(y=>{s+=truE(y,top);});
+  s+=lvl(10.9,rz+.35,fz(+(rz+.35).toFixed(3)))+lvl(10.9,g.eave,fz(+g.eave.toFixed(3)))+lvl(10.9,0,'±0.000');
+  s+=elevDims([0,2.5,6.0,10],-1.2);
+  svg=document.getElementById('elevSide'); svg.setAttribute('viewBox',`-2.3 ${r3(-rz-1.2)} 15.4 ${r3(rz+1.2+1.65)}`); svg.innerHTML=s;
+}
 function drawElevations(){
   const g=roofGeom();
+  if(isTrad()) return drawElevTrad(g);
   // mặt đứng chính
   let s=er(-2.3,-.75,14.3,-.45,'e-ground')+el(-2.3,-.45,14.3,-.45,'e-gline');
   s+=er(-.11,-.45,12.11,0,'e-plinth');
@@ -555,19 +628,21 @@ function drawElevations(){
 const XF_PRICE=2.5; // triệu/m², Xingfa hệ 55 gồm kính cường lực, phụ kiện, lắp đặt
 const XF_AREA=WALLS.reduce((a,w)=>a+(w.ops||[]).reduce((b,o)=>o.k==='open'?b:b+(o.e-o.s)*(o.k==='win'?WIN_TOP-(o.sill||WIN_SILL):o.k==='main'?MAIN_H:DOOR_H),0),0);
 function drawCost(){
-  const R=ROOFS[roofKey];
+  const R=ROOFS[roofKey], T=isTrad();
   const rows=[
     ['Đào đất, móng băng BTCT, giằng móng, tôn nền cát và đổ bê tông nền',165],
     ['Cột 220×220, dầm, giằng tường BTCT',120],
     ['Xây tường gạch 220/110, trát trong và ngoài',120],
-    [`${R.name}: kèo thép mạ kẽm, ngói, diềm mái (~${R.area} m² mặt mái dốc)`,R.cost],
+    T?[`Mái ngói ta (ngói mũi hài) 2 dốc 30°: kèo thép, xà gồ, rui mè, bờ nóc đắp (~${R.area} m² mặt mái)`,R.cost]
+     :[`${R.name}: kèo thép mạ kẽm, ngói, diềm mái (~${R.area} m² mặt mái dốc)`,R.cost],
+    ...(T?[['Tường hồi bít đốc 2 đầu, 4 trụ biểu đắp vữa trang trí',35],['2 cột tròn hiên trước, gờ chỉ vữa màu kem quanh cửa và chân tường',22]]:[]),
     ['Trần thạch cao khung chìm (~105 m²)',22],
     ['Lát nền gạch 60×60, ốp tường WC, đá bậc tam cấp',60],
-    ['Bả matit, sơn nước trong nhà, sơn chống thấm ngoài nhà',50],
-    [`Cửa đi và cửa sổ nhôm Xingfa hệ 55 ghi xám, kính cường lực 8 mm, phụ kiện đồng bộ (~${vi(XF_AREA,1)} m² × ${vi(XF_PRICE,1)} tr/m²)`,Math.round(XF_AREA*XF_PRICE)],
+    T?['Ốp gạch thẻ đỏ mặt ngoài + phủ chống thấm; bả, sơn trong nhà',75]:['Bả matit, sơn nước trong nhà, sơn chống thấm ngoài nhà',50],
+    [`Cửa đi và cửa sổ nhôm Xingfa hệ 55 sơn vân gỗ, kính cường lực 8 mm, phụ kiện đồng bộ (~${vi(XF_AREA,1)} m² × ${vi(XF_PRICE,1)} tr/m²)`,Math.round(XF_AREA*XF_PRICE)],
     ['Điện, nước, bể phốt, bồn nước, thiết bị 2 WC',85],
     ['Tủ bếp cơ bản, bàn thờ và hoàn thiện phòng thờ',55],
-    ['Sân gạch trước nhà, rãnh thoát nước',45]
+    T?['Sân lát gạch đỏ (gạch lá nem), bậc tam cấp gạch đỏ, rãnh thoát nước',60]:['Sân gạch trước nhà, rãnh thoát nước',45]
   ];
   const sub=rows.reduce((a,r)=>a+r[1],0), dp=Math.round(sub*.05), tot=sub+dp;
   document.querySelector('#costTable tbody').innerHTML=rows.map(r=>`<tr><td>${r[0]}</td><td class="num">${vi(r[1],0)}</td></tr>`).join('')+`<tr><td>Dự phòng phát sinh 5%</td><td class="num">${vi(dp,0)}</td></tr>`;
@@ -581,31 +656,64 @@ function drawCost(){
 let renderer,scene,camera,controls,houseG,roofG,labelG,M,box3d,hemi,sun;
 function pbox(x1,x2,y1,y2,z1,z2,mat,g,shadow){
   if(x2-x1<1e-3||y2-y1<1e-3||z2-z1<1e-3) return null;
-  const m=new THREE.Mesh(new THREE.BoxGeometry(x2-x1,z2-z1,y2-y1),mat);
+  const geo=new THREE.BoxGeometry(x2-x1,z2-z1,y2-y1);
+  const tm=(Array.isArray(mat)?mat:[mat]).find(q=>q.userData&&q.userData.tile);
+  if(tm) scaleBoxUV(geo,x2-x1,z2-z1,y2-y1,tm.userData.tile);
+  const m=new THREE.Mesh(geo,mat);
   m.position.set((x1+x2)/2-6,(z1+z2)/2,5-(y1+y2)/2);
   m.castShadow=shadow!==false; m.receiveShadow=true; (g||houseG).add(m); return m;
 }
 const V=(x,y,z)=>new THREE.Vector3(x-6,z,5-y);
+// Kéo giãn UV theo kích thước thật để gạch không bị méo (mặt +X,−X,+Y,−Y,+Z,−Z)
+function scaleBoxUV(geo,sx,sy,sz,tile){
+  const uv=geo.attributes.uv, d=[[sz,sy],[sz,sy],[sx,sz],[sx,sz],[sx,sy],[sx,sy]];
+  for(let f=0;f<6;f++) for(let k=0;k<4;k++){const i=f*4+k; uv.setXY(i,uv.getX(i)*d[f][0]/tile[0],uv.getY(i)*d[f][1]/tile[1]);}
+  uv.needsUpdate=true;
+}
+function canvasTex(w,h,draw){const c=document.createElement('canvas'); c.width=w; c.height=h; draw(c.getContext('2d'),w,h); const t=new THREE.CanvasTexture(c); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.anisotropy=4; return t;}
+// Gạch thẻ đỏ: 2 viên × 2 hàng = 0,46 × 0,14 m
+const brickTex=()=>canvasTex(128,40,(g,w,h)=>{
+  g.fillStyle='#d9ccb5'; g.fillRect(0,0,w,h);
+  const shades=['#a9503a','#b25a40','#9c4834','#ad5539','#a24c36','#b75f44'];
+  let n=0; for(let r=0;r<2;r++){const off=r?32:0; for(let k=-1;k<3;k++){g.fillStyle=shades[(n++)%shades.length]; g.fillRect(k*64+off+1,r*20+1,62,18);}}
+});
+// Gạch lá nem 0,3 m: 2 × 2 viên
+const tileFloorTex=()=>canvasTex(64,64,(g)=>{g.fillStyle='#d8c6ae'; g.fillRect(0,0,64,64); ['#a65a40','#9b5139','#ad6247','#a1563c'].forEach((c,i)=>{g.fillStyle=c; g.fillRect((i%2)*32+1,Math.floor(i/2)*32+1,30,30);});});
 function clearGroup(g){ while(g.children.length){const c=g.children.pop(); if(c.geometry)c.geometry.dispose(); if(c.material&&c.material.map&&c.userData.own){c.material.map.dispose();c.material.dispose();}} }
 function mats(){
   const S=(c,o)=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.85,metalness:0},o||{}));
   M={wall:S(0xf0ebe1),plinth:S(0x8d8981),step:S(0xbdb6aa),
      floor:{live:S(0xd6cbb6),sleep:S(0xc39a6b),tho:S(0xa77450),svc:S(0xcfc7b8),wet:S(0xadbcc0),out:S(0xa8a297)},
-     glass:S(0x9cc2d6,{transparent:true,opacity:.42,roughness:.1,metalness:.2}),frame:S(0x4b4f54,{metalness:.35,roughness:.45}),
-     xfPano:S(0x7f8489,{metalness:.3,roughness:.5}),
+     glass:S(0x9cc2d6,{transparent:true,opacity:.42,roughness:.1,metalness:.2}),frame:S(0x5a3a22,{metalness:.2,roughness:.5}),
+     xfPano:S(0x7a4e2e,{metalness:.15,roughness:.55}),
+     brick:S(0xffffff,{map:brickTex(),roughness:.95}),cream:S(0xe6d29a,{roughness:.8}),woodDark:S(0x3a281c,{roughness:.6}),
+     stone:S(0x9b958a),stepRed:S(0xa4553b),yardRed:S(0xcfcfcf,{map:tileFloorTex(),roughness:.95}),
      wood:S(0x7d4b2a),woodL:S(0xb48a60),red:S(0x7a2c1c),white:S(0xf5f5f2,{roughness:.4}),steel:S(0xb9bdc1,{metalness:.3,roughness:.4}),
      dark:S(0x2c2f33),fabric:S(0xe8e2d4),cab:S(0xd9d2c5),yard:S(0x9e8f80),grass:S(0x86a05f),trunk:S(0x7a6852),leaf:S(0x4d7a39),leaf2:S(0x5d8a3f),path:S(0xc9c0b2)};
+  M.brick.userData.tile=[.46,.14]; M.yardRed.userData.tile=[.6,.6];
+  // tường bao: mặt ngoài gạch trần, mặt trong trát vữa
+  M.wallOut={}; [['+x',0],['-x',1],['+y',5],['-y',4]].forEach(([k,i])=>{const a=Array(6).fill(M.wall); a[i]=M.brick; M.wallOut[k]=a;});
 }
 function buildHouse(){
   clearGroup(houseG);
-  const cap=viewMode==='cut'?1.2:WALLH;
-  pbox(-.11,12.11,-.11,10.11,0,FL,M.plinth);
+  const cap=viewMode==='cut'?1.2:WALLH, T=isTrad(), g=roofGeom();
+  pbox(-.11,12.11,-.11,10.11,0,FL,T?M.brick:M.plinth);
   ROOMS.forEach(r=>pbox(r.r[0],r.r[2],r.r[1],r.r[3],FL,FL+.012,M.floor[r.z],houseG,false));
-  pbox(4.4,7.6,-.9,-.11,0,.15,M.step); pbox(4.4,7.6,-.6,-.11,.15,.3,M.step); pbox(4.4,7.6,-.3,-.11,.3,.45,M.step);
-  pbox(2.2,3.9,10.11,10.7,0,.15,M.step); pbox(2.2,3.9,10.11,10.4,.15,.3,M.step);
+  const st=T?M.stepRed:M.step;
+  pbox(4.4,7.6,-.9,-.11,0,.15,st); pbox(4.4,7.6,-.6,-.11,.15,.3,st); pbox(4.4,7.6,-.3,-.11,.3,.45,st);
+  pbox(2.2,3.9,10.11,10.7,0,.15,st); pbox(2.2,3.9,10.11,10.4,.15,.3,st);
   WALLS.forEach(w=>{
-    const I=wallInfo(w);
-    const seg=(u1,u2,z1,z2,mat,th)=>{z2=Math.min(z2,cap); if(z2<=z1)return; const t=th||I.ht; if(I.horiz) pbox(u1,u2,I.c-t,I.c+t,FL+z1,FL+z2,mat||M.wall); else pbox(I.c-t,I.c+t,u1,u2,FL+z1,FL+z2,mat||M.wall);};
+    const I=wallInfo(w), wm=(T&&w.out)?M.wallOut[w.out]:M.wall;
+    const seg=(u1,u2,z1,z2,mat,th)=>{z2=Math.min(z2,cap); if(z2<=z1)return; const t=th||I.ht; if(I.horiz) pbox(u1,u2,I.c-t,I.c+t,FL+z1,FL+z2,mat||wm); else pbox(I.c-t,I.c+t,u1,u2,FL+z1,FL+z2,mat||wm);};
+    // gờ chỉ vữa màu kem nhô 4 cm khỏi mặt ngoài tường
+    const dir=w.out?(w.out[0]==='+'?1:-1):0;
+    const trim=(u1,u2,z1,z2)=>{z2=Math.min(z2,cap); if(z2<=z1)return; const v1=I.c+dir*I.ht, v2=v1+dir*.04, a=Math.min(v1,v2), b=Math.max(v1,v2);
+      if(I.horiz) pbox(u1,u2,a,b,FL+z1,FL+z2,M.cream); else pbox(a,b,u1,u2,FL+z1,FL+z2,M.cream);};
+    if(T&&w.out&&I.H===WALLH){
+      trim(I.s0-I.ht-.04,I.s1+I.ht+.04,WALLH-.32,WALLH); trim(I.s0-I.ht-.04,I.s1+I.ht+.04,0,.14);
+      I.ops.forEach(o=>{ if(o.k!=='win'&&!o.ext) return; const sill=o.k==='win'?(o.sill||WIN_SILL):0, top=o.k==='win'?WIN_TOP:DOOR_H;
+        trim(o.s-.1,o.s,sill-.1,top+.1); trim(o.e,o.e+.1,sill-.1,top+.1); trim(o.s-.1,o.e+.1,top,top+.1); if(o.k==='win') trim(o.s-.14,o.e+.14,sill-.1,sill); });
+    }
     const xfPanel=(a,b,z0,z1)=>{ seg(a,b,z0,z1,M.glass,.015); seg(a,a+.05,z0,z1,M.frame,.04); seg(b-.05,b,z0,z1,M.frame,.04); seg(a,b,z0,z0+.05,M.frame,.04); seg(a,b,z1-.05,z1,M.frame,.04); };
     const xfDoor=(a,b,h)=>{ seg(a,b,0,.9,M.xfPano,.03); seg(a,a+.05,0,.9,M.frame,.04); seg(b-.05,b,0,.9,M.frame,.04); xfPanel(a,b,.9,h); };
     if(I.H>0){
@@ -636,9 +744,26 @@ function buildHouse(){
       });
       seg(u,I.s1+I.ht,0,I.H);
     }
-    if(w.beam&&cap>=WALLH) seg(I.s0-I.ht,I.s1+I.ht,BEAM_BOT,WALLH);
+    if(w.beam&&cap>=WALLH) seg(I.s0-I.ht,I.s1+I.ht,BEAM_BOT,WALLH,T?M.cream:null);
   });
   [[0,10],[2.2,10]].forEach(([x,y])=>pbox(x-.11,x+.11,y-.11,y+.11,FL,FL+cap,M.wall));
+  if(T){
+    // trụ biểu 4 góc: thân trụ, mũ trụ, lồng đèn, chóp
+    const zt=FL+g.eave+.8;
+    TRU.forEach(([x,y])=>{
+      pbox(x-.23,x+.23,y-.23,y+.23,0,Math.min(zt,FL+cap),M.cream);
+      if(viewMode==='cut') return;
+      pbox(x-.26,x+.26,y-.26,y+.26,zt-.38,zt-.32,M.cream);
+      pbox(x-.3,x+.3,y-.3,y+.3,zt,zt+.1,M.cream); pbox(x-.17,x+.17,y-.17,y+.17,zt+.1,zt+.45,M.cream); pbox(x-.25,x+.25,y-.25,y+.25,zt+.45,zt+.53,M.cream);
+      const cone=new THREE.Mesh(new THREE.ConeGeometry(.22,.38,4),M.cream); cone.position.copy(V(x,y,zt+.53+.19)); cone.rotation.y=Math.PI/4; cone.castShadow=true; houseG.add(cone);
+    });
+    PIL.forEach(([x,y])=>pbox(x-.17,x+.17,y-.17,y+.17,FL,FL+cap,M.cream));
+    RCOL.forEach(([x,y])=>{
+      const h=Math.min(BEAM_BOT,cap)-.27; pbox(x-.2,x+.2,y-.2,y+.2,FL,FL+.15,M.cream);
+      const c=new THREE.Mesh(new THREE.CylinderGeometry(.13,.14,h,20),M.woodDark); c.position.copy(V(x,y,FL+.15+h/2)); c.castShadow=true; houseG.add(c);
+      if(cap>=BEAM_BOT) pbox(x-.18,x+.18,y-.18,y+.18,FL+BEAM_BOT-.12,FL+BEAM_BOT,M.cream);
+    });
+  }
   FURN.forEach(fur3d);
 }
 function fur3d(f){
@@ -667,7 +792,15 @@ function fur3d(f){
     case 'tub': P(x,X,y,Y,0,.8,M.steel); break;
   }
 }
+// Ngói mũi hài: 2 hàng so le, đuôi viên ngói tròn
+const muiHaiTex=R=>canvasTex(64,128,(g)=>{
+  g.fillStyle=R.tileB; g.fillRect(0,0,64,128);
+  const tile=(cx,y0)=>{const gr=g.createLinearGradient(0,y0,0,y0+64); gr.addColorStop(0,R.tileA); gr.addColorStop(1,'#9a4429');
+    g.fillStyle=gr; g.beginPath(); g.moveTo(cx-30,y0); g.lineTo(cx+30,y0); g.lineTo(cx+30,y0+44); g.quadraticCurveTo(cx+30,y0+62,cx,y0+62); g.quadraticCurveTo(cx-30,y0+62,cx-30,y0+44); g.closePath(); g.fill();};
+  tile(32,0); tile(0,64); tile(64,64);
+});
 function tileTexture(R){
+  if(R.type==='gable') return muiHaiTex(R);
   const c=document.createElement('canvas'); c.width=c.height=64; const g=c.getContext('2d');
   g.fillStyle=R.tileA; g.fillRect(0,0,64,64);
   const grd=g.createLinearGradient(0,0,0,64); grd.addColorStop(0,'rgba(255,255,255,.10)'); grd.addColorStop(.75,'rgba(0,0,0,0)'); grd.addColorStop(1,'rgba(0,0,0,.25)');
@@ -678,9 +811,13 @@ function tileTexture(R){
 function buildRoof(){
   clearGroup(roofG);
   const g=roofGeom(), R=g.R, cp=Math.cos(R.pitch*Math.PI/180);
-  const x0=-g.o,x1=12+g.o,y0=-g.o,y1=10+g.o, ze=FL+g.eave+.15, zr=FL+g.ridge+.15;
-  const TW=.34, TH=.30;
-  const faces=[ // [điểm..], hàm uv
+  const gable=R.type==='gable';
+  const x0=gable?.15:-g.o, x1=gable?11.85:12+g.o, y0=-g.o, y1=10+g.o, ze=FL+g.eave, zr=FL+g.ridge;
+  const TW=gable?.3:.34, TH=gable?.5:.30;
+  const faces=gable?[
+    {p:[[x0,y0,ze],[x1,y0,ze],[x1,5,zr],[x0,5,zr]], uv:(x,y)=>[x/TW,(y-y0)/cp/TH]},
+    {p:[[x1,y1,ze],[x0,y1,ze],[x0,5,zr],[x1,5,zr]], uv:(x,y)=>[-x/TW,(y1-y)/cp/TH]}
+  ]:[
     {p:[[x0,y0,ze],[x1,y0,ze],[7,5,zr],[5,5,zr]], uv:(x,y)=>[x/TW,(y-y0)/cp/TH]},
     {p:[[x1,y1,ze],[x0,y1,ze],[5,5,zr],[7,5,zr]], uv:(x,y)=>[-x/TW,(y1-y)/cp/TH]},
     {p:[[x0,y1,ze],[x0,y0,ze],[5,5,zr]], uv:(x,y)=>[-y/TW,(x-x0)/cp/TH]},
@@ -692,9 +829,28 @@ function buildRoof(){
     tris.forEach(t=>t.forEach(i=>{const [x,y,z]=f.p[i]; const v=V(x,y,z); pos.push(v.x,v.y,v.z); uv.push(...f.uv(x,y));}));
   });
   const geo=new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2)); geo.computeVertexNormals();
-  const mat=new THREE.MeshStandardMaterial({map:tileTexture(R),roughness:.8,side:THREE.DoubleSide});
+  const mat=new THREE.MeshStandardMaterial({map:tileTexture(R),color:gable?0xd0d0d0:0xffffff,roughness:.8,side:THREE.DoubleSide});
   const roof=new THREE.Mesh(geo,mat); roof.castShadow=true; roof.receiveShadow=true; roof.userData.own=true; roofG.add(roof);
   const capM=new THREE.MeshStandardMaterial({color:R.ridge,roughness:.7});
+  if(gable){
+    // bờ nóc đắp, sọc vữa kem, đầu kìm hai đầu
+    pbox(x0,x1,4.8,5.2,zr-.05,zr+.28,capM,roofG); pbox(x0,x1,4.78,5.22,zr+.09,zr+.15,M.cream,roofG);
+    [[x0,1],[x1,-1]].forEach(([x,d])=>{const a=Math.min(x,x+d*.5),b=Math.max(x,x+d*.5),a2=Math.min(x,x+d*.25),b2=Math.max(x,x+d*.25);
+      pbox(a,b,4.84,5.16,zr+.28,zr+.5,capM,roofG); pbox(a2,b2,4.86,5.14,zr+.5,zr+.72,capM,roofG);});
+    // diềm mái gỗ trước, sau
+    pbox(x0,x1,y0-.05,y0,ze-.2,ze,M.woodDark,roofG); pbox(x0,x1,y1,y1+.05,ze-.2,ze,M.woodDark,roofG);
+    // tường hồi bít đốc: mặt gạch trần, đỉnh tường vữa kem
+    const e=.23, zb=FL+WALLH-.3, gt=ze+(g.o-e)*g.tp+.35;
+    const shape=new THREE.Shape([[-e,zb],[-e,gt],[5,zr+.35],[10+e,gt],[10+e,zb]].map(p=>new THREE.Vector2(p[0],p[1])));
+    [-.19,11.81].forEach(xs=>{
+      const geo=new THREE.ExtrudeGeometry(shape,{depth:.38,bevelEnabled:false});
+      const uv=geo.attributes.uv; for(let i=0;i<uv.count;i++) uv.setXY(i,uv.getX(i)/.46,uv.getY(i)/.14);
+      const m=new THREE.Mesh(geo,[M.brick,M.cream]); m.rotation.y=Math.PI/2; m.position.set(xs-6,0,5); m.castShadow=true; m.receiveShadow=true; roofG.add(m);
+    });
+    pbox(-.11,12.11,-.11,10.11,FL+WALLH-.03,FL+WALLH-.01,M.wall,roofG,false);
+    roofG.visible=viewMode==='ext';
+    return;
+  }
   const cyl=(a,b,r)=>{const len=a.distanceTo(b); const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,len,8),capM); m.position.copy(a).add(b).multiplyScalar(.5); m.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),b.clone().sub(a).normalize()); m.castShadow=true; roofG.add(m);};
   const r0=V(5,5,zr+.03), r1=V(7,5,zr+.03);
   if(r0.distanceTo(r1)>.01) cyl(r0,r1,.08);
@@ -728,7 +884,7 @@ function buildLabels(){
 function site(){
   const gr=new THREE.Mesh(new THREE.PlaneGeometry(140,140),M.grass); gr.rotation.x=-Math.PI/2; gr.receiveShadow=true; scene.add(gr);
   const sg=new THREE.Group(); scene.add(sg);
-  pbox(-1.5,13.5,-7.5,-.11,0,.03,M.yard,sg,false);
+  pbox(-1.5,13.5,-7.5,-.11,0,.03,M.yardRed,sg,false);
   pbox(4.6,7.4,-14,-7.5,0,.02,M.path,sg,false);
   const areca=(x,y,h)=>{
     const tr=new THREE.Mesh(new THREE.CylinderGeometry(.08,.12,h,8),M.trunk); tr.position.copy(V(x,y,h/2)); tr.castShadow=true; sg.add(tr);
@@ -772,7 +928,7 @@ function init3D(){
 function setRoof(k){
   roofKey=k;
   document.querySelectorAll('[data-roof]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.roof===k)));
-  drawElevations(); drawCost(); if(roofG) buildRoof();
+  drawPlan(); drawElevations(); drawCost(); if(roofG){ buildHouse(); buildRoof(); }
 }
 function setView(v){
   viewMode=v;
